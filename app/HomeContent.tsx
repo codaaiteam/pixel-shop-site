@@ -86,47 +86,62 @@ export default function HomeContent() {
   }, []);
 
   return (
-    <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 20px" }}>
-      {/* Hero */}
-      <section style={{ textAlign: "center", padding: "40px 0 24px" }}>
-        <h1
-          className="pixel-font"
-          style={{
-            fontSize: 28,
-            color: "#f8d028",
-            marginBottom: 16,
-            lineHeight: 1.6,
-          }}
-        >
-          SHOPST4R
-        </h1>
-        <p
-          style={{
-            fontSize: 18,
-            color: "#e0d8e8",
-            maxWidth: 560,
-            margin: "0 auto",
-            lineHeight: 1.7,
-          }}
-        >
-          Run your own pixel art clothing boutique. Design clothes, decorate
-          your shop, serve customers, and build your fashion empire.
-        </p>
-      </section>
+    <>
+      {/* Hero — compact, just title + hook */}
+      <div
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "0 20px",
+          textAlign: "center",
+        }}
+      >
+        <section style={{ padding: "32px 0 16px" }}>
+          <h1
+            className="pixel-font"
+            style={{
+              fontSize: 28,
+              color: "#f8d028",
+              marginBottom: 12,
+              lineHeight: 1.6,
+            }}
+          >
+            SHOPST4R
+          </h1>
+          <p
+            style={{
+              fontSize: 16,
+              color: "#c8b8d8",
+              maxWidth: 560,
+              margin: "0 auto",
+              lineHeight: 1.7,
+            }}
+          >
+            Design clothes, run your shop, and build your dream fashion empire
+          </p>
+        </section>
+      </div>
 
-      {/* Game Container — always visible on first screen */}
-      <section style={{ padding: "16px 0 40px" }}>
+      {/* Game Container — wide, prominent, first screen */}
+      <section
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "12px 20px 24px",
+        }}
+      >
         <div
           ref={gameContainerRef}
           style={{
             position: "relative",
             width: "100%",
-            height: "70vh",
+            height: "min(720px, 75vh)",
             minHeight: 400,
             border: "4px solid #5a3a18",
             borderRadius: 8,
             overflow: "hidden",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+            boxShadow:
+              "0 8px 32px rgba(0,0,0,0.5), 0 0 80px rgba(248,208,40,0.05)",
             background: "#000",
           }}
         >
@@ -151,7 +166,8 @@ export default function HomeContent() {
                 left: 0,
                 width: "100%",
                 height: "100%",
-                background: "rgba(0,0,0,0.6)",
+                background:
+                  "radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.75) 100%)",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -163,8 +179,19 @@ export default function HomeContent() {
               <div
                 className="pixel-font"
                 style={{
-                  fontSize: 48,
+                  width: 80,
+                  height: 80,
+                  borderRadius: "50%",
+                  background:
+                    "linear-gradient(180deg, #58b848 0%, #389828 100%)",
+                  border: "4px solid #2a7818",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 32,
                   color: "#fff",
+                  boxShadow:
+                    "0 4px 24px rgba(72,200,72,0.4), 0 0 60px rgba(72,200,72,0.15)",
                   marginBottom: 20,
                 }}
               >
@@ -173,20 +200,21 @@ export default function HomeContent() {
               <div
                 className="pixel-font"
                 style={{
-                  background:
-                    "linear-gradient(180deg, #58b848 0%, #389828 100%)",
                   color: "#fff",
-                  padding: "16px 40px",
-                  fontSize: 14,
-                  border: "3px solid #2a7818",
-                  borderRadius: 4,
-                  boxShadow: "0 4px 12px rgba(72,200,72,0.3)",
+                  fontSize: 16,
+                  marginBottom: 8,
+                  textShadow: "0 2px 8px rgba(0,0,0,0.5)",
                 }}
               >
-                PLAY GAME
+                Play ShopSt4r Now
               </div>
-              <p style={{ marginTop: 16, color: "#ccc", fontSize: 13 }}>
-                Free &middot; No download &middot; Click to start
+              <p
+                style={{
+                  color: "rgba(255,255,255,0.7)",
+                  fontSize: 13,
+                }}
+              >
+                Free &middot; No Download &middot; Instant Play
               </p>
             </div>
           )}
@@ -215,224 +243,230 @@ export default function HomeContent() {
             </button>
           )}
         </div>
+
+        {/* SEO keyword line under game */}
         <p
           style={{
             textAlign: "center",
             color: "#a898b8",
-            fontSize: 12,
-            marginTop: 10,
+            fontSize: 13,
+            marginTop: 12,
           }}
         >
-          Your progress saves automatically in your browser.
+          Play ShopSt4r Online — Free Browser Game
         </p>
       </section>
 
-      {/* Features */}
-      <section style={{ padding: "40px 0 80px" }}>
-        <h2
-          className="pixel-font"
-          style={{
-            textAlign: "center",
-            fontSize: 14,
-            color: "#e868a8",
-            marginBottom: 40,
-          }}
-        >
-          FEATURES
-        </h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 20,
-          }}
-        >
-          {features.map((f) => (
-            <div
-              key={f.title}
-              style={{
-                background: "#2a1e3e",
-                border: "2px solid #362a50",
-                borderRadius: 8,
-                padding: "24px 20px",
-              }}
-            >
-              <div style={{ fontSize: 28, marginBottom: 12 }}>{f.icon}</div>
-              <h3
-                className="pixel-font"
-                style={{ fontSize: 10, color: "#f8d028", marginBottom: 10 }}
-              >
-                {f.title}
-              </h3>
-              <p style={{ color: "#c8b8d8", fontSize: 14, lineHeight: 1.6 }}>
-                {f.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* What is ShopSt4r */}
-      <section style={{ padding: "40px 0 60px" }}>
-        <h2 className="pixel-font" style={sectionTitle}>
-          WHAT IS SHOPST4R?
-        </h2>
-        <div
-          style={{
-            background: "#2a1e3e",
-            border: "2px solid #362a50",
-            borderRadius: 8,
-            padding: "32px 28px",
-            lineHeight: 1.8,
-            color: "#c8b8d8",
-            fontSize: 15,
-          }}
-        >
-          <p style={{ marginBottom: 16 }}>
-            <strong style={{ color: "#f8d028" }}>ShopSt4r</strong> is a free
-            browser-based pixel art simulation game where you run your own
-            clothing boutique. Inspired by cozy games like Stardew Valley and
-            shop management sims, ShopSt4r lets you design pixel art clothes,
-            decorate your store, and serve a cast of quirky characters — all from
-            your browser.
-          </p>
-          <p style={{ marginBottom: 16 }}>
-            Start with a small shop and a handful of basic patterns. As you sell
-            clothes and earn money, unlock new design tools, furniture, and
-            decorations. Arrange your boutique layout, create eye-catching window
-            displays, and watch your reputation grow.
-          </p>
-          <p>
-            Whether you love pixel art, fashion, or relaxing simulation games,
-            ShopSt4r offers hours of creative, cozy gameplay with no download
-            required.
-          </p>
-        </div>
-      </section>
-
-      {/* How to Play */}
-      <section style={{ padding: "40px 0 60px" }}>
-        <h2 className="pixel-font" style={sectionTitle}>
-          HOW TO PLAY
-        </h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: 20,
-          }}
-        >
-          {[
-            {
-              step: "1",
-              title: "Open Your Shop",
-              desc: "Start the game in your browser. Your empty boutique is ready for you to make it shine.",
-            },
-            {
-              step: "2",
-              title: "Design Clothes",
-              desc: "Use the design tool to create t-shirts, hoodies, and jackets with colors and pixel art graphics.",
-            },
-            {
-              step: "3",
-              title: "Serve Customers",
-              desc: "Customers walk in looking for outfits. Show them your designs and make the sale.",
-            },
-            {
-              step: "4",
-              title: "Upgrade & Expand",
-              desc: "Earn money to unlock new patterns, furniture, decor items, and powerful design abilities.",
-            },
-          ].map((s) => (
-            <div
-              key={s.step}
-              style={{
-                background: "#2a1e3e",
-                border: "2px solid #362a50",
-                borderRadius: 8,
-                padding: "24px 20px",
-                textAlign: "center",
-              }}
-            >
-              <div
-                className="pixel-font"
-                style={{
-                  fontSize: 24,
-                  color: "#48c848",
-                  marginBottom: 12,
-                }}
-              >
-                {s.step}
-              </div>
-              <h3
-                className="pixel-font"
-                style={{ fontSize: 10, color: "#f8d028", marginBottom: 10 }}
-              >
-                {s.title}
-              </h3>
-              <p style={{ color: "#c8b8d8", fontSize: 14, lineHeight: 1.6 }}>
-                {s.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-        <div style={{ textAlign: "center", marginTop: 32 }}>
-          <a
-            href="/how-to-play"
-            style={{ color: "#e868a8", fontSize: 14, fontWeight: 600 }}
+      {/* Everything below in narrower container */}
+      <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 20px" }}>
+        {/* Features */}
+        <section style={{ padding: "40px 0 80px" }}>
+          <h2
+            className="pixel-font"
+            style={{
+              textAlign: "center",
+              fontSize: 14,
+              color: "#e868a8",
+              marginBottom: 40,
+            }}
           >
-            Read full guide →
-          </a>
-        </div>
-      </section>
+            FEATURES
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: 20,
+            }}
+          >
+            {features.map((f) => (
+              <div
+                key={f.title}
+                style={{
+                  background: "#2a1e3e",
+                  border: "2px solid #362a50",
+                  borderRadius: 8,
+                  padding: "24px 20px",
+                }}
+              >
+                <div style={{ fontSize: 28, marginBottom: 12 }}>{f.icon}</div>
+                <h3
+                  className="pixel-font"
+                  style={{ fontSize: 10, color: "#f8d028", marginBottom: 10 }}
+                >
+                  {f.title}
+                </h3>
+                <p style={{ color: "#c8b8d8", fontSize: 14, lineHeight: 1.6 }}>
+                  {f.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      {/* FAQ */}
-      <section style={{ padding: "40px 0 80px" }}>
-        <h2 className="pixel-font" style={sectionTitle}>
-          FAQ
-        </h2>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
-          }}
-        >
-          {faqs.map((f) => (
-            <details
-              key={f.q}
-              style={{
-                background: "#2a1e3e",
-                border: "2px solid #362a50",
-                borderRadius: 8,
-                padding: "20px 24px",
-              }}
+        {/* What is ShopSt4r */}
+        <section style={{ padding: "40px 0 60px" }}>
+          <h2 className="pixel-font" style={sectionTitle}>
+            WHAT IS SHOPST4R?
+          </h2>
+          <div
+            style={{
+              background: "#2a1e3e",
+              border: "2px solid #362a50",
+              borderRadius: 8,
+              padding: "32px 28px",
+              lineHeight: 1.8,
+              color: "#c8b8d8",
+              fontSize: 15,
+            }}
+          >
+            <p style={{ marginBottom: 16 }}>
+              <strong style={{ color: "#f8d028" }}>ShopSt4r</strong> is a free
+              browser-based pixel art simulation game where you run your own
+              clothing boutique. Inspired by cozy games like Stardew Valley and
+              shop management sims, ShopSt4r lets you design pixel art clothes,
+              decorate your store, and serve a cast of quirky characters — all
+              from your browser.
+            </p>
+            <p style={{ marginBottom: 16 }}>
+              Start with a small shop and a handful of basic patterns. As you
+              sell clothes and earn money, unlock new design tools, furniture,
+              and decorations. Arrange your boutique layout, create eye-catching
+              window displays, and watch your reputation grow.
+            </p>
+            <p>
+              Whether you love pixel art, fashion, or relaxing simulation games,
+              ShopSt4r offers hours of creative, cozy gameplay with no download
+              required.
+            </p>
+          </div>
+        </section>
+
+        {/* How to Play */}
+        <section style={{ padding: "40px 0 60px" }}>
+          <h2 className="pixel-font" style={sectionTitle}>
+            HOW TO PLAY
+          </h2>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: 20,
+            }}
+          >
+            {[
+              {
+                step: "1",
+                title: "Open Your Shop",
+                desc: "Start the game in your browser. Your empty boutique is ready for you to make it shine.",
+              },
+              {
+                step: "2",
+                title: "Design Clothes",
+                desc: "Use the design tool to create t-shirts, hoodies, and jackets with colors and pixel art graphics.",
+              },
+              {
+                step: "3",
+                title: "Serve Customers",
+                desc: "Customers walk in looking for outfits. Show them your designs and make the sale.",
+              },
+              {
+                step: "4",
+                title: "Upgrade & Expand",
+                desc: "Earn money to unlock new patterns, furniture, decor items, and powerful design abilities.",
+              },
+            ].map((s) => (
+              <div
+                key={s.step}
+                style={{
+                  background: "#2a1e3e",
+                  border: "2px solid #362a50",
+                  borderRadius: 8,
+                  padding: "24px 20px",
+                  textAlign: "center",
+                }}
+              >
+                <div
+                  className="pixel-font"
+                  style={{
+                    fontSize: 24,
+                    color: "#48c848",
+                    marginBottom: 12,
+                  }}
+                >
+                  {s.step}
+                </div>
+                <h3
+                  className="pixel-font"
+                  style={{ fontSize: 10, color: "#f8d028", marginBottom: 10 }}
+                >
+                  {s.title}
+                </h3>
+                <p style={{ color: "#c8b8d8", fontSize: 14, lineHeight: 1.6 }}>
+                  {s.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: "center", marginTop: 32 }}>
+            <a
+              href="/how-to-play"
+              style={{ color: "#e868a8", fontSize: 14, fontWeight: 600 }}
             >
-              <summary
+              Read full guide →
+            </a>
+          </div>
+        </section>
+
+        {/* FAQ — first one open by default */}
+        <section style={{ padding: "40px 0 80px" }}>
+          <h2 className="pixel-font" style={sectionTitle}>
+            FAQ
+          </h2>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+            }}
+          >
+            {faqs.map((f, i) => (
+              <details
+                key={f.q}
+                open={i === 0}
                 style={{
-                  color: "#f8d028",
-                  fontSize: 15,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  lineHeight: 1.5,
+                  background: "#2a1e3e",
+                  border: "2px solid #362a50",
+                  borderRadius: 8,
+                  padding: "20px 24px",
                 }}
               >
-                {f.q}
-              </summary>
-              <p
-                style={{
-                  color: "#c8b8d8",
-                  fontSize: 14,
-                  lineHeight: 1.7,
-                  marginTop: 12,
-                }}
-              >
-                {f.a}
-              </p>
-            </details>
-          ))}
-        </div>
-      </section>
-    </div>
+                <summary
+                  style={{
+                    color: "#f8d028",
+                    fontSize: 15,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {f.q}
+                </summary>
+                <p
+                  style={{
+                    color: "#c8b8d8",
+                    fontSize: 14,
+                    lineHeight: 1.7,
+                    marginTop: 12,
+                  }}
+                >
+                  {f.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </>
   );
 }
