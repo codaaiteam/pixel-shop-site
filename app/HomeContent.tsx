@@ -5,27 +5,27 @@ import { useState, useRef, useCallback } from "react";
 const faqs = [
   {
     q: "Is ShopSt4r free to play?",
-    a: "Yes! ShopSt4r is completely free. Just open your browser and start playing — no download or sign-up required.",
+    a: "Yes, ShopSt4r is completely free to play in your browser. No download, installation, or sign-up is required — just visit the site and start playing. Your progress is saved automatically using your browser storage, so you can come back anytime and pick up where you left off.",
   },
   {
     q: "What devices can I play ShopSt4r on?",
-    a: "ShopSt4r runs in any modern web browser on desktop, laptop, tablet, or phone. No app install needed.",
+    a: "ShopSt4r runs in any modern web browser on desktop, laptop, tablet, or phone. It works on Chrome, Firefox, Safari, and Edge. Since it's a browser game, there's no app to install — just open the page and play.",
   },
   {
     q: "How do I design clothes in ShopSt4r?",
-    a: "Use the in-game design tool to pick colors, add graphics, and layer patterns onto t-shirts, hoodies, and jackets. Unlock more options as you progress.",
+    a: "Use the in-game pixel art design tool to create t-shirts, hoodies, and jackets. Pick from a palette of colors, add graphics, and layer patterns to make unique designs. As you progress and earn money, you'll unlock new patterns, color options, and powerful design abilities like Move Graphics and Design Decor.",
   },
   {
     q: "Is ShopSt4r similar to Stardew Valley?",
-    a: "ShopSt4r shares the cozy pixel art style and simulation gameplay of Stardew Valley, but focuses on running a clothing boutique instead of a farm.",
+    a: "ShopSt4r shares the cozy pixel art aesthetic and relaxing simulation gameplay of Stardew Valley, but with a unique twist — instead of running a farm, you run a clothing boutique. If you enjoy creative, low-stress games where you can build something at your own pace, ShopSt4r is a great fit.",
   },
   {
     q: "Can I save my progress?",
-    a: "Yes, your progress is automatically saved in your browser. You can pick up right where you left off.",
+    a: "Yes! Your game progress is automatically saved in your browser's local storage. There's no need to create an account or log in. Just close the tab and come back later — your shop, designs, and upgrades will all be waiting for you.",
   },
   {
     q: "How do I earn money in the game?",
-    a: "Sell clothes and decorations to customers who visit your shop. Better designs and higher star ratings earn more money.",
+    a: "You earn money by selling clothes and decorations to customers who visit your shop. Creating better designs, upgrading your shop layout, and earning higher star ratings from customers will all help you earn more. Use your earnings to unlock new patterns, furniture, decor items, and creative abilities.",
   },
 ];
 
@@ -113,11 +113,14 @@ export default function HomeContent() {
               fontSize: 16,
               color: "#c8b8d8",
               maxWidth: 560,
-              margin: "0 auto",
+              margin: "0 auto 8px",
               lineHeight: 1.7,
             }}
           >
             Design clothes, run your shop, and build your dream fashion empire
+          </p>
+          <p style={{ fontSize: 13, color: "#a898b8" }}>
+            Play instantly in your browser — no download required
           </p>
         </section>
       </div>
@@ -177,22 +180,23 @@ export default function HomeContent() {
               }}
             >
               <div
-                className="pixel-font"
+                className="pixel-font play-btn-circle"
                 style={{
-                  width: 80,
-                  height: 80,
+                  width: 90,
+                  height: 90,
                   borderRadius: "50%",
                   background:
-                    "linear-gradient(180deg, #58b848 0%, #389828 100%)",
-                  border: "4px solid #2a7818",
+                    "linear-gradient(180deg, #4ade80 0%, #22c55e 50%, #16a34a 100%)",
+                  border: "4px solid #15803d",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: 32,
+                  fontSize: 36,
                   color: "#fff",
                   boxShadow:
-                    "0 4px 24px rgba(72,200,72,0.4), 0 0 60px rgba(72,200,72,0.15)",
+                    "0 6px 32px rgba(74,222,128,0.5), 0 0 80px rgba(74,222,128,0.2)",
                   marginBottom: 20,
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
                 }}
               >
                 ▶
@@ -253,7 +257,7 @@ export default function HomeContent() {
             marginTop: 12,
           }}
         >
-          Play ShopSt4r Online — Free Browser Game
+          Play ShopSt4r Online Free — Cozy Pixel Shop Simulator
         </p>
       </section>
 
@@ -337,7 +341,9 @@ export default function HomeContent() {
             <p>
               Whether you love pixel art, fashion, or relaxing simulation games,
               ShopSt4r offers hours of creative, cozy gameplay with no download
-              required.
+              required. A cozy pixel game made with love — built as a creative
+              indie project for players who enjoy designing and building at their
+              own pace.
             </p>
           </div>
         </section>

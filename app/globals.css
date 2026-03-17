@@ -27,3 +27,8 @@ body {
 
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--pink); }
+
+.play-btn-circle:hover {
+  transform: scale(1.12);
+  box-shadow: 0 8px 40px rgba(74,222,128,0.6), 0 0 100px rgba(74,222,128,0.3) !important;
+}
