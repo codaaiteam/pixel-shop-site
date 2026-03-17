@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 
 const faqs = [
   {
@@ -71,6 +71,19 @@ const sectionTitle = {
 
 export default function HomeContent() {
   const [playing, setPlaying] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
+  const gameContainerRef = useRef<HTMLDivElement>(null);
+
+  const toggleFullscreen = useCallback(() => {
+    if (!gameContainerRef.current) return;
+    if (!document.fullscreenElement) {
+      gameContainerRef.current.requestFullscreen();
+      setFullscreen(true);
+    } else {
+      document.exitFullscreen();
+      setFullscreen(false);
+    }
+  }, []);
 
   return (
     <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 20px" }}>
@@ -84,16 +97,17 @@ export default function HomeContent() {
         {playing ? (
           <>
             <div
+              ref={gameContainerRef}
               style={{
+                position: "relative",
                 width: "100%",
-                aspectRatio: "16 / 9",
-                maxHeight: "70vh",
+                height: "80vh",
                 border: "4px solid #5a3a18",
                 borderRadius: 8,
                 overflow: "hidden",
                 boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
                 background: "#000",
-                margin: "0 auto 16px",
+                margin: "0 auto 12px",
               }}
             >
               <iframe
@@ -106,9 +120,29 @@ export default function HomeContent() {
                 }}
                 allowFullScreen
               />
+              <button
+                onClick={toggleFullscreen}
+                style={{
+                  position: "absolute",
+                  top: 10,
+                  right: 10,
+                  background: "rgba(0,0,0,0.7)",
+                  color: "#f8d028",
+                  border: "2px solid #5a3a18",
+                  borderRadius: 4,
+                  padding: "6px 12px",
+                  fontSize: 12,
+                  cursor: "pointer",
+                  zIndex: 10,
+                  fontFamily: "inherit",
+                }}
+                title="Toggle fullscreen"
+              >
+                {fullscreen ? "⊡ EXIT" : "⛶ FULLSCREEN"}
+              </button>
             </div>
             <p style={{ color: "#a898b8", fontSize: 12 }}>
-              Tip: Your progress saves automatically in your browser.
+              Tip: Your progress saves automatically. Press the button or F11 for fullscreen.
             </p>
           </>
         ) : (
