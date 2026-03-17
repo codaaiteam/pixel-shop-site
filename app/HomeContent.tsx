@@ -87,112 +87,144 @@ export default function HomeContent() {
 
   return (
     <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 20px" }}>
-      {/* Hero / Game */}
-      <section
-        style={{
-          textAlign: "center",
-          padding: playing ? "20px 0 40px" : "80px 0 60px",
-        }}
-      >
-        {playing ? (
-          <>
+      {/* Hero */}
+      <section style={{ textAlign: "center", padding: "40px 0 24px" }}>
+        <h1
+          className="pixel-font"
+          style={{
+            fontSize: 28,
+            color: "#f8d028",
+            marginBottom: 16,
+            lineHeight: 1.6,
+          }}
+        >
+          SHOPST4R
+        </h1>
+        <p
+          style={{
+            fontSize: 18,
+            color: "#e0d8e8",
+            maxWidth: 560,
+            margin: "0 auto",
+            lineHeight: 1.7,
+          }}
+        >
+          Run your own pixel art clothing boutique. Design clothes, decorate
+          your shop, serve customers, and build your fashion empire.
+        </p>
+      </section>
+
+      {/* Game Container — always visible on first screen */}
+      <section style={{ padding: "16px 0 40px" }}>
+        <div
+          ref={gameContainerRef}
+          style={{
+            position: "relative",
+            width: "100%",
+            height: "70vh",
+            minHeight: 400,
+            border: "4px solid #5a3a18",
+            borderRadius: 8,
+            overflow: "hidden",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+            background: "#000",
+          }}
+        >
+          <iframe
+            src="/game/index.html"
+            title="ShopSt4r — Pixel Shop Game"
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+            }}
+            allowFullScreen
+          />
+
+          {/* Play overlay */}
+          {!playing && (
             <div
-              ref={gameContainerRef}
-              style={{
-                position: "relative",
-                width: "100%",
-                height: "80vh",
-                border: "4px solid #5a3a18",
-                borderRadius: 8,
-                overflow: "hidden",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
-                background: "#000",
-                margin: "0 auto 12px",
-              }}
-            >
-              <iframe
-                src="/game/index.html"
-                title="ShopSt4r — Pixel Shop Game"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                }}
-                allowFullScreen
-              />
-              <button
-                onClick={toggleFullscreen}
-                style={{
-                  position: "absolute",
-                  top: 10,
-                  right: 10,
-                  background: "rgba(0,0,0,0.7)",
-                  color: "#f8d028",
-                  border: "2px solid #5a3a18",
-                  borderRadius: 4,
-                  padding: "6px 12px",
-                  fontSize: 12,
-                  cursor: "pointer",
-                  zIndex: 10,
-                  fontFamily: "inherit",
-                }}
-                title="Toggle fullscreen"
-              >
-                {fullscreen ? "⊡ EXIT" : "⛶ FULLSCREEN"}
-              </button>
-            </div>
-            <p style={{ color: "#a898b8", fontSize: 12 }}>
-              Tip: Your progress saves automatically. Press the button or F11 for fullscreen.
-            </p>
-          </>
-        ) : (
-          <>
-            <h1
-              className="pixel-font"
-              style={{
-                fontSize: 28,
-                color: "#f8d028",
-                marginBottom: 20,
-                lineHeight: 1.6,
-              }}
-            >
-              SHOPST4R
-            </h1>
-            <p
-              style={{
-                fontSize: 20,
-                color: "#e0d8e8",
-                maxWidth: 560,
-                margin: "0 auto 40px",
-                lineHeight: 1.7,
-              }}
-            >
-              Run your own pixel art clothing boutique. Design clothes, decorate
-              your shop, serve customers, and build your fashion empire.
-            </p>
-            <button
               onClick={() => setPlaying(true)}
-              className="pixel-font"
               style={{
-                display: "inline-block",
-                background:
-                  "linear-gradient(180deg, #58b848 0%, #389828 100%)",
-                color: "#fff",
-                padding: "16px 40px",
-                fontSize: 14,
-                border: "3px solid #2a7818",
-                borderRadius: 4,
-                boxShadow: "0 4px 12px rgba(72,200,72,0.3)",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                background: "rgba(0,0,0,0.6)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
                 cursor: "pointer",
+                zIndex: 5,
               }}
             >
-              PLAY NOW
+              <div
+                className="pixel-font"
+                style={{
+                  fontSize: 48,
+                  color: "#fff",
+                  marginBottom: 20,
+                }}
+              >
+                ▶
+              </div>
+              <div
+                className="pixel-font"
+                style={{
+                  background:
+                    "linear-gradient(180deg, #58b848 0%, #389828 100%)",
+                  color: "#fff",
+                  padding: "16px 40px",
+                  fontSize: 14,
+                  border: "3px solid #2a7818",
+                  borderRadius: 4,
+                  boxShadow: "0 4px 12px rgba(72,200,72,0.3)",
+                }}
+              >
+                PLAY GAME
+              </div>
+              <p style={{ marginTop: 16, color: "#ccc", fontSize: 13 }}>
+                Free &middot; No download &middot; Click to start
+              </p>
+            </div>
+          )}
+
+          {/* Fullscreen button — visible after playing */}
+          {playing && (
+            <button
+              onClick={toggleFullscreen}
+              style={{
+                position: "absolute",
+                top: 10,
+                right: 10,
+                background: "rgba(0,0,0,0.7)",
+                color: "#f8d028",
+                border: "2px solid #5a3a18",
+                borderRadius: 4,
+                padding: "6px 12px",
+                fontSize: 12,
+                cursor: "pointer",
+                zIndex: 10,
+                fontFamily: "inherit",
+              }}
+              title="Toggle fullscreen"
+            >
+              {fullscreen ? "⊡ EXIT" : "⛶ FULLSCREEN"}
             </button>
-            <p style={{ marginTop: 16, color: "#a898b8", fontSize: 13 }}>
-              Free &middot; No download &middot; Plays in your browser
-            </p>
-          </>
-        )}
+          )}
+        </div>
+        <p
+          style={{
+            textAlign: "center",
+            color: "#a898b8",
+            fontSize: 12,
+            marginTop: 10,
+          }}
+        >
+          Your progress saves automatically in your browser.
+        </p>
       </section>
 
       {/* Features */}
