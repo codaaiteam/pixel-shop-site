@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #1a1028;
+  --bg-card: #2a1e3e;
+  --bg-card-hover: #362a50;
+  --accent: #f8d028;
+  --accent-dim: #c8a018;
+  --text: #f0e8f8;
+  --text-dim: #a898b8;
+  --pink: #e868a8;
+  --green: #48c848;
+  --blue: #6898c8;
+  --brown: #c8a065;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+.pixel-font { font-family: 'Press Start 2P', monospace; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--pink); }
