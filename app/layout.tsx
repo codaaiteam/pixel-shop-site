@@ -65,6 +65,9 @@ function Nav() {
         <a href="/devlog" style={{ color: "#f0e8f8", fontWeight: 500 }}>
           Devlog
         </a>
+        <a href="/about" style={{ color: "#f0e8f8", fontWeight: 500 }}>
+          About
+        </a>
       </div>
     </nav>
   );

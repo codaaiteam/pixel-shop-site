@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 const entries = [
   {
     date: "March 2026",
+    title: "Built in 2 Days — The ShopSt4r Story",
+    content:
+      "ShopSt4r was built in just two days by an 11-year-old developer using AI-assisted tools. The goal was to create a cozy shop simulation game where players can design pixel art clothes and run their own boutique. What started as a fun experiment became a fully playable game with character creation, customer AI, a design tool, shop decoration, upgrades, a mail system, and more. This project shows what's possible when creativity meets modern AI tools — no matter your age.",
+  },
+  {
+    date: "March 2026",
     title: "Move Graphics Ability",
     content:
       "Added the Move Graphics Ability upgrade. Players can now drag graphics freely, place multiple copies of the same graphic, and layer different graphics on a single design. Works for both clothing and decor.",

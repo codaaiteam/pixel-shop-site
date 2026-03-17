@@ -119,7 +119,16 @@ export default function HomeContent() {
           >
             Design clothes, run your shop, and build your dream fashion empire
           </p>
-          <p style={{ fontSize: 13, color: "#a898b8" }}>
+          <p
+            style={{
+              fontSize: 13,
+              color: "#e868a8",
+              marginBottom: 4,
+            }}
+          >
+            Built by an 11-year-old developer using AI tools in just 2 days
+          </p>
+          <p style={{ fontSize: 12, color: "#a898b8" }}>
             Play instantly in your browser — no download required
           </p>
         </section>
