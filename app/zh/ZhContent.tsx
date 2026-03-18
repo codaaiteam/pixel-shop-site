@@ -2,63 +2,36 @@
 
 import { useState, useRef, useCallback } from "react";
 
-const faqs = [
-  {
-    q: "Is ShopSt4r free to play?",
-    a: "Yes, ShopSt4r is completely free to play in your browser. No download, installation, or sign-up is required — just visit the site and start playing. Your progress is saved automatically using your browser storage, so you can come back anytime and pick up where you left off.",
-  },
-  {
-    q: "What devices can I play ShopSt4r on?",
-    a: "ShopSt4r runs in any modern web browser on desktop, laptop, tablet, or phone. It works on Chrome, Firefox, Safari, and Edge. Since it's a browser game, there's no app to install — just open the page and play.",
-  },
-  {
-    q: "How do I design clothes in ShopSt4r?",
-    a: "Use the in-game pixel art design tool to create t-shirts, hoodies, and jackets. Pick from a palette of colors, add graphics, and layer patterns to make unique designs. As you progress and earn money, you'll unlock new patterns, color options, and powerful design abilities like Move Graphics and Design Decor.",
-  },
-  {
-    q: "Is ShopSt4r similar to Stardew Valley?",
-    a: "ShopSt4r shares the cozy pixel art aesthetic and relaxing simulation gameplay of Stardew Valley, but with a unique twist — instead of running a farm, you run a clothing boutique. If you enjoy creative, low-stress games where you can build something at your own pace, ShopSt4r is a great fit.",
-  },
-  {
-    q: "Can I save my progress?",
-    a: "Yes! Your game progress is automatically saved in your browser's local storage. There's no need to create an account or log in. Just close the tab and come back later — your shop, designs, and upgrades will all be waiting for you.",
-  },
-  {
-    q: "How do I earn money in the game?",
-    a: "You earn money by selling clothes and decorations to customers who visit your shop. Creating better designs, upgrading your shop layout, and earning higher star ratings from customers will all help you earn more. Use your earnings to unlock new patterns, furniture, decor items, and creative abilities.",
-  },
-];
-
 const features = [
   {
     icon: "👕",
-    title: "Design Clothing",
-    desc: "Create pixel art t-shirts, hoodies, and jackets with colors, graphics, and layered designs.",
+    title: "设计服装",
+    desc: "用像素画工具设计 T 恤、卫衣和夹克，搭配颜色、图案和多层设计。",
   },
   {
     icon: "🏪",
-    title: "Run Your Shop",
-    desc: "Place furniture, arrange displays, and serve customers who come in looking for the perfect outfit.",
+    title: "经营店铺",
+    desc: "摆放家具、布置展示架，接待来店寻找心仪服装的顾客。",
   },
   {
     icon: "🎨",
-    title: "Decorate Everything",
-    desc: "Design pots, sculptures, paintings, lamps, and more to make your boutique truly unique.",
+    title: "装饰一切",
+    desc: "设计花盆、雕塑、画作、灯具等装饰品，让你的精品店与众不同。",
   },
   {
     icon: "💰",
-    title: "Grow Your Empire",
-    desc: "Earn money, unlock upgrades, buy new patterns, and expand your clothing collection.",
+    title: "扩张帝国",
+    desc: "赚取金币，解锁升级，购买新图案，扩大你的服装系列。",
   },
   {
     icon: "✉️",
-    title: "Meet Characters",
-    desc: "Receive mail from Alyssa, Hope, and other characters who react to your shop and designs.",
+    title: "邂逅角色",
+    desc: "收到 Alyssa、Hope 等角色的来信，他们会对你的店铺和设计做出反应。",
   },
   {
     icon: "⭐",
-    title: "Unlock Abilities",
-    desc: "Buy upgrades like Move Graphics and Design Decor to unlock powerful creative tools.",
+    title: "解锁技能",
+    desc: "购买「移动图案」和「设计装饰」等升级，解锁强大的创意工具。",
   },
 ];
 
@@ -69,7 +42,12 @@ const sectionTitle = {
   textAlign: "center" as const,
 };
 
-export default function HomeContent() {
+interface FAQ {
+  q: string;
+  a: string;
+}
+
+export default function ZhContent({ faqs }: { faqs: FAQ[] }) {
   const [playing, setPlaying] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const gameContainerRef = useRef<HTMLDivElement>(null);
@@ -87,7 +65,7 @@ export default function HomeContent() {
 
   return (
     <>
-      {/* Hero — compact, just title + hook */}
+      {/* Hero */}
       <div
         style={{
           maxWidth: 1200,
@@ -122,14 +100,14 @@ export default function HomeContent() {
           </h1>
           <p
             style={{
-              fontSize: 16,
+              fontSize: 18,
               color: "#c8b8d8",
               maxWidth: 560,
               margin: "0 auto 8px",
-              lineHeight: 1.7,
+              lineHeight: 1.8,
             }}
           >
-            Design clothes, run your shop, and build your dream fashion empire
+            设计服装、经营店铺、打造你的梦想时尚帝国
           </p>
           <p
             style={{
@@ -138,22 +116,22 @@ export default function HomeContent() {
               marginBottom: 4,
             }}
           >
-            Built by an 11-year-old developer using AI tools in just 2 days
+            由一位 11 岁开发者使用 AI 工具在 2 天内打造
           </p>
           <p style={{ fontSize: 12, color: "#a898b8" }}>
-            Play instantly in your browser — no download required
+            打开浏览器即可畅玩 — 免费、无需下载
           </p>
           <p style={{ fontSize: 11, color: "#a898b8", marginTop: 8 }}>
-            <span style={{ color: "#f8d028" }}>English</span>
-            {" · "}
-            <a href="/zh" style={{ color: "#6898c8" }}>
-              中文
+            <a href="/" style={{ color: "#6898c8" }}>
+              English
             </a>
+            {" · "}
+            <span style={{ color: "#f8d028" }}>中文</span>
           </p>
         </section>
       </div>
 
-      {/* Game Container — wide, prominent, first screen */}
+      {/* Game */}
       <section
         style={{
           maxWidth: 1200,
@@ -178,7 +156,7 @@ export default function HomeContent() {
         >
           <iframe
             src="/game/index.html"
-            title="ShopSt4r — Pixel Shop Game"
+            title="ShopSt4r — 像素服装店游戏"
             style={{
               width: "100%",
               height: "100%",
@@ -187,7 +165,6 @@ export default function HomeContent() {
             allowFullScreen
           />
 
-          {/* Play overlay */}
           {!playing && (
             <div
               onClick={() => setPlaying(true)}
@@ -238,7 +215,7 @@ export default function HomeContent() {
                   textShadow: "0 2px 8px rgba(0,0,0,0.5)",
                 }}
               >
-                Play ShopSt4r Now
+                立即开始游戏
               </div>
               <p
                 style={{
@@ -246,12 +223,11 @@ export default function HomeContent() {
                   fontSize: 13,
                 }}
               >
-                Free &middot; No Download &middot; Instant Play
+                免费 · 无需下载 · 即点即玩
               </p>
             </div>
           )}
 
-          {/* Fullscreen button — visible after playing */}
           {playing && (
             <button
               onClick={toggleFullscreen}
@@ -269,14 +245,13 @@ export default function HomeContent() {
                 zIndex: 10,
                 fontFamily: "inherit",
               }}
-              title="Toggle fullscreen"
+              title="切换全屏"
             >
-              {fullscreen ? "⊡ EXIT" : "⛶ FULLSCREEN"}
+              {fullscreen ? "⊡ 退出全屏" : "⛶ 全屏"}
             </button>
           )}
         </div>
 
-        {/* SEO keyword line under game */}
         <p
           style={{
             textAlign: "center",
@@ -285,11 +260,11 @@ export default function HomeContent() {
             marginTop: 12,
           }}
         >
-          Play ShopSt4r Online Free — Cozy Pixel Shop Simulator
+          免费在线游玩 ShopSt4r — 温馨像素风服装店模拟经营游戏
         </p>
       </section>
 
-      {/* Everything below in narrower container */}
+      {/* Below content */}
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 20px" }}>
         {/* Features */}
         <section style={{ padding: "40px 0 80px" }}>
@@ -302,7 +277,7 @@ export default function HomeContent() {
               marginBottom: 40,
             }}
           >
-            FEATURES
+            游戏特色
           </h2>
           <div
             style={{
@@ -339,7 +314,7 @@ export default function HomeContent() {
         {/* What is ShopSt4r */}
         <section style={{ padding: "40px 0 60px" }}>
           <h2 className="pixel-font" style={sectionTitle}>
-            WHAT IS SHOPST4R?
+            什么是 SHOPST4R？
           </h2>
           <div
             style={{
@@ -353,25 +328,16 @@ export default function HomeContent() {
             }}
           >
             <p style={{ marginBottom: 16 }}>
-              <strong style={{ color: "#f8d028" }}>ShopSt4r</strong> is a free
-              browser-based pixel art simulation game where you run your own
-              clothing boutique. Inspired by cozy games like Stardew Valley and
-              shop management sims, ShopSt4r lets you design pixel art clothes,
-              decorate your store, and serve a cast of quirky characters — all
-              from your browser.
+              <strong style={{ color: "#f8d028" }}>ShopSt4r</strong>{" "}
+              是一款免费的浏览器像素风模拟经营游戏，你将经营自己的服装精品店。灵感来源于星露谷物语等温馨游戏和店铺经营模拟器，ShopSt4r
+              让你设计像素风服装、装饰店铺、服务各种有趣的角色——全部在浏览器中完成。
             </p>
             <p style={{ marginBottom: 16 }}>
-              Start with a small shop and a handful of basic patterns. As you
-              sell clothes and earn money, unlock new design tools, furniture,
-              and decorations. Arrange your boutique layout, create eye-catching
-              window displays, and watch your reputation grow.
+              从一家小店和几种基础图案开始。随着销售服装和赚取金币，解锁新的设计工具、家具和装饰品。布置你的精品店、打造吸引眼球的橱窗展示，看着你的声誉不断增长。
             </p>
             <p>
-              Whether you love pixel art, fashion, or relaxing simulation games,
-              ShopSt4r offers hours of creative, cozy gameplay with no download
-              required. A cozy pixel game made with love — built as a creative
-              indie project for players who enjoy designing and building at their
-              own pace.
+              无论你喜欢像素画、时尚还是轻松的模拟经营游戏，ShopSt4r
+              都能提供数小时的创意休闲游戏体验，无需下载。一款用心打造的温馨像素游戏——由独立开发者用创意和热情构建。
             </p>
           </div>
         </section>
@@ -379,7 +345,7 @@ export default function HomeContent() {
         {/* How to Play */}
         <section style={{ padding: "40px 0 60px" }}>
           <h2 className="pixel-font" style={sectionTitle}>
-            HOW TO PLAY
+            怎么玩
           </h2>
           <div
             style={{
@@ -391,23 +357,23 @@ export default function HomeContent() {
             {[
               {
                 step: "1",
-                title: "Open Your Shop",
-                desc: "Start the game in your browser. Your empty boutique is ready for you to make it shine.",
+                title: "开设店铺",
+                desc: "在浏览器中启动游戏。你的空白精品店已经准备好，等你来装扮！",
               },
               {
                 step: "2",
-                title: "Design Clothes",
-                desc: "Use the design tool to create t-shirts, hoodies, and jackets with colors and pixel art graphics.",
+                title: "设计服装",
+                desc: "使用设计工具，用颜色和像素图案制作 T 恤、卫衣和夹克。",
               },
               {
                 step: "3",
-                title: "Serve Customers",
-                desc: "Customers walk in looking for outfits. Show them your designs and make the sale.",
+                title: "接待顾客",
+                desc: "顾客走进来寻找心仪的服装。展示你的设计，完成交易。",
               },
               {
                 step: "4",
-                title: "Upgrade & Expand",
-                desc: "Earn money to unlock new patterns, furniture, decor items, and powerful design abilities.",
+                title: "升级扩展",
+                desc: "赚取金币解锁新图案、家具、装饰品和强大的设计技能。",
               },
             ].map((s) => (
               <div
@@ -442,20 +408,12 @@ export default function HomeContent() {
               </div>
             ))}
           </div>
-          <div style={{ textAlign: "center", marginTop: 32 }}>
-            <a
-              href="/how-to-play"
-              style={{ color: "#e868a8", fontSize: 14, fontWeight: 600 }}
-            >
-              Read full guide →
-            </a>
-          </div>
         </section>
 
-        {/* FAQ — first one open by default */}
+        {/* FAQ */}
         <section style={{ padding: "40px 0 80px" }}>
           <h2 className="pixel-font" style={sectionTitle}>
-            FAQ
+            常见问题
           </h2>
           <div
             style={{

@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: "ShopSt4r — Run Your Own Pixel Art Clothing Boutique",
   description:
     "Design pixel art clothes, decorate your shop, serve quirky customers, and grow your fashion empire. Play free in your browser!",
+  alternates: {
+    canonical: "https://shopst4r.com",
+    languages: {
+      en: "https://shopst4r.com",
+      zh: "https://shopst4r.com/zh",
+    },
+  },
 };
 
 const faqs = [
