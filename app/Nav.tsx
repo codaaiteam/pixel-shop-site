@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const enLinks = [
   { href: "/play", label: "Play", color: "#48c848" },
@@ -20,14 +20,18 @@ const zhLinks = [
 
 export default function Nav() {
   const pathname = usePathname();
+  const router = useRouter();
   const isZh = pathname.startsWith("/zh");
   const links = isZh ? zhLinks : enLinks;
 
-  // Language toggle: if on /zh/xxx, switch to /xxx; if on /xxx, switch to /zh/xxx
-  const toggleHref = isZh
-    ? pathname.replace(/^\/zh/, "") || "/"
-    : `/zh${pathname === "/" ? "" : pathname}`;
-  const toggleLabel = isZh ? "EN" : "中文";
+  const handleLangChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const lang = e.target.value;
+    if (lang === "zh" && !isZh) {
+      router.push(`/zh${pathname === "/" ? "" : pathname}`);
+    } else if (lang === "en" && isZh) {
+      router.push(pathname.replace(/^\/zh/, "") || "/");
+    }
+  };
 
   return (
     <nav
@@ -55,24 +59,32 @@ export default function Nav() {
           <a
             key={l.href}
             href={l.href}
-            style={{ color: l.color || "#f0e8f8", fontWeight: l.color ? 600 : 500 }}
+            style={{
+              color: l.color || "#f0e8f8",
+              fontWeight: l.color ? 600 : 500,
+            }}
           >
             {l.label}
           </a>
         ))}
-        <a
-          href={toggleHref}
+        <select
+          value={isZh ? "zh" : "en"}
+          onChange={handleLangChange}
           style={{
-            color: "#1a1028",
-            background: "#f8d028",
-            padding: "4px 10px",
+            background: "#362a50",
+            color: "#f8d028",
+            border: "2px solid #5a3a18",
             borderRadius: 4,
-            fontSize: 12,
-            fontWeight: 700,
+            padding: "4px 8px",
+            fontSize: 13,
+            fontWeight: 600,
+            cursor: "pointer",
+            outline: "none",
           }}
         >
-          {toggleLabel}
-        </a>
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+        </select>
       </div>
     </nav>
   );
