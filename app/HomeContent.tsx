@@ -152,7 +152,7 @@ function ShareEmbed() {
             fontFamily: "inherit",
           }}
         >
-          {showEmbed ? "Hide Embed Code" : "&lt;/&gt; Embed"}
+          {showEmbed ? "Hide Embed Code" : "</> Embed"}
         </button>
       </div>
 
