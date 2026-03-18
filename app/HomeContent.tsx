@@ -97,6 +97,18 @@ export default function HomeContent() {
         }}
       >
         <section style={{ padding: "32px 0 16px" }}>
+          <img
+            src="/logo.png"
+            alt="ShopSt4r Logo"
+            width={64}
+            height={64}
+            style={{
+              display: "block",
+              margin: "0 auto 12px",
+              imageRendering: "pixelated",
+              borderRadius: 8,
+            }}
+          />
           <h1
             className="pixel-font"
             style={{

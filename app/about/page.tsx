@@ -25,11 +25,37 @@ export default function About() {
           textAlign: "center",
           color: "#e868a8",
           fontSize: 14,
-          marginBottom: 48,
+          marginBottom: 32,
         }}
       >
         The story behind ShopSt4r
       </p>
+
+      {/* Creator avatar */}
+      <div style={{ textAlign: "center", marginBottom: 32 }}>
+        <img
+          src="/creator-avatar.png"
+          alt="ShopSt4r Creator — Pixel Art Portrait"
+          width={160}
+          height={160}
+          style={{
+            borderRadius: "50%",
+            border: "4px solid #5a3a18",
+            imageRendering: "pixelated",
+            boxShadow: "0 4px 24px rgba(0,0,0,0.4)",
+          }}
+        />
+        <p
+          className="pixel-font"
+          style={{
+            fontSize: 10,
+            color: "#f8d028",
+            marginTop: 12,
+          }}
+        >
+          The Creator, Age 11
+        </p>
+      </div>
 
       <div
         style={{
