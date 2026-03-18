@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -99,6 +100,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          defer
+          data-domain="shopst4r.com"
+          src="https://app.pageview.app/js/script.js"
+        />
+      </head>
       <body>
         <Nav />
         <main style={{ minHeight: "calc(100vh - 140px)" }}>{children}</main>
