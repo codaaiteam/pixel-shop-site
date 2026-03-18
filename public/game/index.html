@@ -528,95 +528,134 @@ body{
   color:#f8e8c0;font-family:'Press Start 2P',monospace;font-size:9px;
   text-shadow:1px 1px #5a3a18;
 }
+/* FONT SIZE BOOST — scale all text up */
+#game { font-size: 1.15em; }
+.sdv-btn { font-size: 9px !important; }
+.create-section label { font-size: 8px !important; }
+#char-create h2 { font-size: 14px !important; }
+#name-input { font-size: 11px !important; }
+#start-btn { font-size: 12px !important; }
+#dialog-box { font-size: 10px !important; }
+#dialog-next { font-size: 9px !important; }
+#transition-text { font-size: 16px !important; }
+#room-customize h2 { font-size: 13px !important; }
+.room-section label { font-size: 8px !important; }
+#shop-header span { font-size: 10px !important; }
+#shop-header .hint { font-size: 7px !important; }
+#clothing-screen h2 { font-size: 13px !important; }
+.clothing-type-btn { font-size: 9px !important; }
+.design-section label { font-size: 8px !important; }
+.store-item-name { font-size: 7px !important; }
+.store-item-price { font-size: 8px !important; }
+.store-item-bought { font-size: 7px !important; }
+.mail-sender-name { font-size: 7px !important; }
+.mail-sender-email { font-size: 6px !important; }
+#mail-from { font-size: 7px !important; }
+#mail-text { font-size: 8px !important; }
+#mail-header span { font-size: 10px !important; }
+.tooltip-box p { font-size: 7px !important; }
+#tutorial-box p { font-size: 7px !important; }
+#avatar-menu-header span { font-size: 9px !important; }
+.avatar-clothing-item span { font-size: 6px !important; }
+/* Language toggle button */
+#lang-toggle-btn {
+  position: absolute; top: 6px; right: 8px; z-index: 200;
+  background: rgba(90,58,24,0.85); color: #f8d028;
+  border: 2px solid #8a6a38; border-radius: 3px;
+  font-family: 'Press Start 2P', monospace; font-size: 7px;
+  padding: 4px 8px; cursor: pointer;
+}
+#lang-toggle-btn:hover { background: #5a3a18; }
 </style>
 </head>
 <body>
 <div id="game">
+<button id="lang-toggle-btn" onclick="toggleLang()">EN / 中文</button>
   <div id="char-create" class="screen active">
-    <h2>Create Your Character</h2>
+    <h2 data-t="Create Your Character">Create Your Character</h2>
     <div class="avatar-preview"><canvas id="preview-canvas" width="32" height="32" style="width:64px;height:64px"></canvas></div>
     <div class="create-row">
       <div class="create-col">
-        <div class="create-section"><label>Skin</label><div class="option-row" id="skin-options"></div></div>
-        <div class="create-section"><label>Eyes</label><div class="option-row" id="eye-options"></div></div>
-        <div class="create-section"><label>Hair</label><div class="option-row" id="hair-options"></div></div>
-        <div class="create-section"><label>Hair Color</label><div class="option-row" id="haircolor-options"></div></div>
+        <div class="create-section"><label data-t="Skin">Skin</label><div class="option-row" id="skin-options"></div></div>
+        <div class="create-section"><label data-t="Eyes">Eyes</label><div class="option-row" id="eye-options"></div></div>
+        <div class="create-section"><label data-t="Hair">Hair</label><div class="option-row" id="hair-options"></div></div>
+        <div class="create-section"><label data-t="Hair Color">Hair Color</label><div class="option-row" id="haircolor-options"></div></div>
       </div>
       <div class="create-col">
-        <div class="create-section"><label>Shirt</label><div class="option-row" id="shirt-options"></div></div>
-        <div class="create-section"><label>Shirt Color</label><div class="option-row" id="shirtcolor-options"></div></div>
-        <div class="create-section"><label>Pants</label><div class="option-row" id="pants-options"></div></div>
-        <div class="create-section"><label>Accessory</label><div class="option-row" id="accessory-options"></div></div>
+        <div class="create-section"><label data-t="Shirt">Shirt</label><div class="option-row" id="shirt-options"></div></div>
+        <div class="create-section"><label data-t="Shirt Color">Shirt Color</label><div class="option-row" id="shirtcolor-options"></div></div>
+        <div class="create-section"><label data-t="Pants">Pants</label><div class="option-row" id="pants-options"></div></div>
+        <div class="create-section"><label data-t="Accessory">Accessory</label><div class="option-row" id="accessory-options"></div></div>
       </div>
     </div>
-    <div class="create-section" style="background:transparent;border:none;box-shadow:none"><label>Name</label><input type="text" id="name-input" placeholder="Type name..." maxlength="12"></div>
-    <button id="start-btn">START GAME</button>
+    <div class="create-section" style="background:transparent;border:none;box-shadow:none"><label data-t="Name">Name</label><input type="text" id="name-input" data-t="Type name..." placeholder="Type name..." maxlength="12"></div>
+    <button id="start-btn" data-t="START GAME">START GAME</button>
   </div>
   <div id="cutscene" class="screen">
     <div class="cutscene-scene"><canvas id="cutscene-bg" width="620" height="260"></canvas>
       <div class="cutscene-char" id="npc-wrap"><canvas id="npc-canvas" width="32" height="32" style="width:64px;height:64px"></canvas></div>
       <div class="cutscene-char" id="player-wrap"><canvas id="player-cutscene" width="32" height="32" style="width:64px;height:64px"></canvas></div>
     </div>
-    <div id="dialog-box"><div id="cutscene-text"></div><button id="dialog-next">NEXT</button></div>
+    <div id="dialog-box"><div id="cutscene-text"></div><button id="dialog-next" data-t="NEXT">NEXT</button></div>
   </div>
-  <div id="transition" class="screen"><div id="transition-text">One day later...</div></div>
+  <div id="transition" class="screen"><div id="transition-text" data-t="One day later...">One day later...</div></div>
   <div id="room-customize" class="screen">
-    <h2>CUSTOMIZE YOUR SHOP</h2>
+    <h2 data-t="CUSTOMIZE YOUR SHOP">CUSTOMIZE YOUR SHOP</h2>
     <div id="room-preview"><canvas id="room-preview-canvas" width="400" height="200"></canvas></div>
     <div class="room-options">
-      <div class="room-section"><label>WALL COLOR</label><div class="room-color-row" id="wall-colors"></div></div>
-      <div class="room-section"><label>WALL STYLE</label><div class="room-color-row" id="wall-styles"></div></div>
-      <div class="room-section"><label>FLOOR COLOR</label><div class="room-color-row" id="floor-colors"></div></div>
-      <div class="room-section"><label>FLOOR STYLE</label><div class="room-color-row" id="floor-styles"></div></div>
+      <div class="room-section"><label data-t="WALL COLOR">WALL COLOR</label><div class="room-color-row" id="wall-colors"></div></div>
+      <div class="room-section"><label data-t="WALL STYLE">WALL STYLE</label><div class="room-color-row" id="wall-styles"></div></div>
+      <div class="room-section"><label data-t="FLOOR COLOR">FLOOR COLOR</label><div class="room-color-row" id="floor-colors"></div></div>
+      <div class="room-section"><label data-t="FLOOR STYLE">FLOOR STYLE</label><div class="room-color-row" id="floor-styles"></div></div>
     </div>
-    <button id="room-done-btn" class="sdv-btn" style="font-size:8px;padding:8px 20px;background:linear-gradient(180deg,#48a848 0%,#308830 100%);color:#f8e8c0;text-shadow:1px 1px #184818;margin-top:4px">DONE</button>
+    <button id="room-done-btn" class="sdv-btn" data-t="DONE" style="font-size:8px;padding:8px 20px;background:linear-gradient(180deg,#48a848 0%,#308830 100%);color:#f8e8c0;text-shadow:1px 1px #184818;margin-top:4px">DONE</button>
   </div>
   <div id="shop-screen" class="screen">
-    <div id="shop-header"><span id="shop-title">DECORATE YOUR STORE</span><span class="hint" id="shop-hint">Click to place | Drag to move | X to delete</span><div style="display:flex;gap:6px;align-items:center"><span id="player-name-display"></span><button class="sdv-btn" id="done-decorating" style="font-size:6px;padding:4px 10px;background:linear-gradient(180deg,#c84040 0%,#a03030 100%);color:#f8e8c0;text-shadow:1px 1px #601818">DONE</button><button class="sdv-btn" id="design-btn" style="display:none;font-size:6px;padding:4px 10px;background:linear-gradient(180deg,#4878b8 0%,#305898 100%);color:#f8e8c0;text-shadow:1px 1px #182848">DESIGN</button><button class="sdv-btn" id="done-placing-btn">DONE</button><button class="sdv-btn" id="redecorate-btn">DONE</button><button class="sdv-btn" id="start-day-btn">START DAY</button><button class="sdv-btn" id="end-day-btn">END DAY</button></div></div>
+    <div id="shop-header"><span id="shop-title" data-t="DECORATE YOUR STORE">DECORATE YOUR STORE</span><span class="hint" id="shop-hint" data-t="Click to place | Drag to move | X to delete">Click to place | Drag to move | X to delete</span><div style="display:flex;gap:6px;align-items:center"><span id="player-name-display"></span><button class="sdv-btn" id="done-decorating" data-t="DONE" style="font-size:7px;padding:6px 12px;background:linear-gradient(180deg,#c84040 0%,#a03030 100%);color:#f8e8c0;text-shadow:1px 1px #601818">DONE</button><button class="sdv-btn" id="design-btn" data-t="Design" style="display:none;font-size:7px;padding:6px 12px;background:linear-gradient(180deg,#4878b8 0%,#305898 100%);color:#f8e8c0;text-shadow:1px 1px #182848">Design</button><button class="sdv-btn" id="done-placing-btn" data-t="DONE" style="font-size:7px;padding:6px 12px">DONE</button><button class="sdv-btn" id="redecorate-btn" data-t="DONE" style="font-size:7px;padding:6px 12px">DONE</button><button class="sdv-btn" id="start-day-btn" data-t="Start Day" style="font-size:7px;padding:6px 12px">START DAY</button><button class="sdv-btn" id="end-day-btn" style="font-size:7px;padding:6px 12px">END DAY</button></div></div>
     <div id="shop-area"><canvas id="room-canvas" width="800" height="490"></canvas><div id="player-sprite"><canvas width="32" height="32" style="width:64px;height:64px;image-rendering:pixelated"></canvas></div></div>
     <div id="item-panel"></div>
     <div id="shop-name-display"></div>
     <div id="money-tab">$0</div>
     <div id="shop-name-popup">
       <div id="shop-name-box">
-        <h3>Don't Forget the Shop Name!</h3>
-        <input type="text" id="shop-name-input" placeholder="Enter shop name..." maxlength="20">
-        <button class="sdv-btn" id="shop-name-ok" style="font-size:7px;padding:6px 16px;background:linear-gradient(180deg,#48a848 0%,#308830 100%);color:#f8e8c0;text-shadow:1px 1px #184818">OK</button>
+        <h3 data-t="Don't Forget the Shop Name!">Don't Forget the Shop Name!</h3>
+        <input type="text" id="shop-name-input" data-t="Enter shop name..." placeholder="Enter shop name..." maxlength="20">
+        <button class="sdv-btn" id="shop-name-ok" data-t="OK" style="font-size:8px;padding:7px 18px;background:linear-gradient(180deg,#48a848 0%,#308830 100%);color:#f8e8c0;text-shadow:1px 1px #184818">OK</button>
       </div>
     </div>
-    <div id="sold-out-overlay"><h1>SOLD OUT!</h1><p>All clothes have been sold!</p><button class="sdv-btn" id="sold-out-ok" style="font-size:9px;padding:8px 24px;margin-top:8px;background:linear-gradient(180deg,#48a848 0%,#308830 100%);color:#f8e8c0;text-shadow:1px 1px #184818">OK</button></div>
+    <div id="sold-out-overlay"><h1 data-t="SOLD OUT!">SOLD OUT!</h1><p data-t="All clothes have been sold!">All clothes have been sold!</p><button class="sdv-btn" id="sold-out-ok" data-t="OK" style="font-size:10px;padding:9px 26px;margin-top:8px;background:linear-gradient(180deg,#48a848 0%,#308830 100%);color:#f8e8c0;text-shadow:1px 1px #184818">OK</button></div>
     <div id="dark-overlay"></div>
-    <div id="shop-tab"><span class="notif"></span><canvas id="shop-tab-icon" width="16" height="16" style="width:24px;height:24px"></canvas><span style="font-family:'Press Start 2P',monospace;font-size:4px;color:#3a2210">SHOP</span></div>
+    <div id="shop-tab"><span class="notif"></span><canvas id="shop-tab-icon" width="16" height="16" style="width:24px;height:24px"></canvas><span data-t="SHOP" style="font-family:'Press Start 2P',monospace;font-size:5px;color:#3a2210">SHOP</span></div>
     <div id="inventory-menu">
       <div id="inv-tabs">
-        <div class="inv-tab" data-tab="furniture">Furniture</div>
-        <div class="inv-tab active" data-tab="clothing">Clothing</div>
-        <div class="inv-tab" data-tab="saved">Saved</div>
-        <div class="inv-tab" data-tab="decor">Decor</div>
-        <div class="inv-tab" data-tab="paintings">Paintings</div>
+        <div class="inv-tab" data-tab="furniture" data-t="Furniture">Furniture</div>
+        <div class="inv-tab active" data-tab="clothing" data-t="Clothing">Clothing</div>
+        <div class="inv-tab" data-tab="saved" data-t="Saved">Saved</div>
+        <div class="inv-tab" data-tab="decor" data-t="DECOR">Decor</div>
+        <div class="inv-tab" data-tab="paintings" data-t="Paintings">Paintings</div>
       </div>
       <div id="inv-content"></div>
     </div>
-    <div id="store-tab"><canvas id="store-tab-icon" width="16" height="16" style="width:24px;height:24px"></canvas><span style="font-family:'Press Start 2P',monospace;font-size:4px;color:#3a2210">STORE</span></div>
+    <div id="store-tab"><canvas id="store-tab-icon" width="16" height="16" style="width:24px;height:24px"></canvas><span data-t="STORE" style="font-family:'Press Start 2P',monospace;font-size:5px;color:#3a2210">STORE</span></div>
     <div id="store-menu">
       <button id="store-close">x</button>
       <div id="store-menu-tabs">
-        <div class="store-menu-tab active" data-stab="supplies">Supplies</div>
-        <div class="store-menu-tab" data-stab="furniture">Furniture</div>
-        <div class="store-menu-tab" data-stab="decor">Decor</div>
-        <div class="store-menu-tab" data-stab="clothing">Clothing</div>
+        <div class="store-menu-tab active" data-stab="supplies" data-t="Supplies">Supplies</div>
+        <div class="store-menu-tab" data-stab="furniture" data-t="Furniture">Furniture</div>
+        <div class="store-menu-tab" data-stab="decor" data-t="DECOR">Decor</div>
+        <div class="store-menu-tab" data-stab="clothing" data-t="Clothing">Clothing</div>
       </div>
       <div id="store-menu-content"></div>
     </div>
-    <div id="decor-tab"><canvas id="decor-tab-icon" width="16" height="16" style="width:24px;height:24px"></canvas><span style="font-family:'Press Start 2P',monospace;font-size:4px;color:#3a2210">DECOR</span></div>
-    <div id="decor-menu"><button class="menu-close-btn" onclick="document.getElementById('decor-menu').style.display='none'" style="position:absolute;top:4px;right:8px;background:none;border:none;color:#5a3a18;font-family:'Press Start 2P',monospace;font-size:10px;cursor:pointer">x</button><div style="padding:8px 8px 4px;font-family:'Press Start 2P',monospace;font-size:7px;color:#3a2210;border-bottom:3px solid #5a3a18">MY DECOR</div><div id="decor-menu-content"></div></div>
-    <div id="avatar-tab"><canvas id="avatar-tab-icon" width="16" height="16" style="width:24px;height:24px"></canvas><span style="font-family:'Press Start 2P',monospace;font-size:4px;color:#3a2210">AVATAR</span></div>
-    <div id="avatar-menu"><button onclick="document.getElementById('avatar-menu').style.display='none'" style="position:absolute;top:4px;right:8px;background:none;border:none;color:#5a3a18;font-family:'Press Start 2P',monospace;font-size:10px;cursor:pointer">x</button><div id="avatar-menu-header"><canvas id="avatar-preview-small" width="32" height="32" style="width:64px;height:64px"></canvas><span>YOUR AVATAR</span></div><div id="avatar-menu-content"></div></div>
+    <div id="decor-tab"><canvas id="decor-tab-icon" width="16" height="16" style="width:24px;height:24px"></canvas><span data-t="DECOR" style="font-family:'Press Start 2P',monospace;font-size:5px;color:#3a2210">DECOR</span></div>
+    <div id="decor-menu"><button class="menu-close-btn" onclick="document.getElementById('decor-menu').style.display='none'" style="position:absolute;top:4px;right:8px;background:none;border:none;color:#5a3a18;font-family:'Press Start 2P',monospace;font-size:10px;cursor:pointer">x</button><div data-t="MY DECOR" style="padding:8px 8px 4px;font-family:'Press Start 2P',monospace;font-size:8px;color:#3a2210;border-bottom:3px solid #5a3a18">MY DECOR</div><div id="decor-menu-content"></div></div>
+    <div id="avatar-tab"><canvas id="avatar-tab-icon" width="16" height="16" style="width:24px;height:24px"></canvas><span data-t="AVATAR" style="font-family:'Press Start 2P',monospace;font-size:5px;color:#3a2210">AVATAR</span></div>
+    <div id="avatar-menu"><button onclick="document.getElementById('avatar-menu').style.display='none'" style="position:absolute;top:4px;right:8px;background:none;border:none;color:#5a3a18;font-family:'Press Start 2P',monospace;font-size:10px;cursor:pointer">x</button><div id="avatar-menu-header"><canvas id="avatar-preview-small" width="32" height="32" style="width:64px;height:64px"></canvas><span data-t="YOUR AVATAR">YOUR AVATAR</span></div><div id="avatar-menu-content"></div></div>
     <div id="tooltip-decor" class="tooltip-callout" style="top:148px;right:50px"><div class="tooltip-box"><p>This is the decor tab. The decor you buy in the store will appear here.</p><button class="tooltip-ok" id="tooltip-decor-ok">OK</button></div><div class="tooltip-line"></div></div>
     <div id="tooltip-avatar" class="tooltip-callout" style="top:198px;right:50px;display:none"><div class="tooltip-box"><p>This is the avatar tab. The clothes you buy for your avatar are here.</p><button class="tooltip-ok" id="tooltip-avatar-ok">OK</button></div><div class="tooltip-line"></div></div>
-    <div id="mail-tab"><span class="mail-badge"></span><canvas id="mail-tab-icon" width="16" height="16" style="width:24px;height:24px"></canvas><span style="font-family:'Press Start 2P',monospace;font-size:4px;color:#3a2210">MAIL</span></div>
+    <div id="mail-tab"><span class="mail-badge"></span><canvas id="mail-tab-icon" width="16" height="16" style="width:24px;height:24px"></canvas><span data-t="MAIL" style="font-family:'Press Start 2P',monospace;font-size:5px;color:#3a2210">MAIL</span></div>
     <div id="mail-window">
-      <div id="mail-header"><span>MAIL</span><button id="mail-close">x</button></div>
+      <div id="mail-header"><span data-t="MAIL">MAIL</span><button id="mail-close">x</button></div>
       <div id="mail-body">
         <div id="mail-list"></div>
         <div id="mail-content"><div id="mail-from"></div><div id="mail-text">Select a message to read.</div></div>
@@ -632,53 +671,53 @@ body{
     </div>
   </div>
   <div id="clothing-screen" class="screen">
-    <h2>DESIGN CLOTHING</h2>
+    <h2 data-t="DESIGN CLOTHING" style="color:#3a2210;font-size:14px;margin-top:8px;text-shadow:1px 1px #d8b878">DESIGN CLOTHING</h2>
     <div class="clothing-types" id="clothing-types"></div>
     <div id="clothing-workspace">
       <div id="clothing-preview-area">
         <canvas id="clothing-canvas" width="120" height="120" style="width:240px;height:240px"></canvas>
       </div>
       <div id="clothing-sidebar">
-        <div class="design-section"><label>COLOR</label><div class="design-colors" id="clothing-colors"></div></div>
-        <div class="design-section"><label>GRAPHICS</label><div class="graphics-list" id="graphics-list"></div></div>
+        <div class="design-section"><label data-t="COLOR">COLOR</label><div class="design-colors" id="clothing-colors"></div></div>
+        <div class="design-section"><label data-t="GRAPHICS">GRAPHICS</label><div class="graphics-list" id="graphics-list"></div></div>
       </div>
     </div>
     <div id="clothing-bottom">
-      <button class="sdv-btn" id="clothing-save-design" style="font-size:7px;background:linear-gradient(180deg,#4878b8 0%,#305898 100%);color:#f8e8c0;text-shadow:1px 1px #182848">SAVE DESIGN</button>
-      <button class="sdv-btn" id="clothing-done" style="font-size:7px;background:linear-gradient(180deg,#c84040 0%,#a03030 100%);color:#f8e8c0;text-shadow:1px 1px #601818">DONE</button>
+      <button class="sdv-btn" id="clothing-save-design" data-t="SAVE DESIGN" style="font-size:8px;padding:7px 14px;background:linear-gradient(180deg,#4878b8 0%,#305898 100%);color:#f8e8c0;text-shadow:1px 1px #182848">SAVE DESIGN</button>
+      <button class="sdv-btn" id="clothing-done" data-t="DONE" style="font-size:8px;padding:7px 14px;background:linear-gradient(180deg,#c84040 0%,#a03030 100%);color:#f8e8c0;text-shadow:1px 1px #601818">DONE</button>
     </div>
   </div>
   <!-- DESIGN CHOICE SCREEN -->
   <div id="design-choice-screen" class="screen">
-    <h2 style="color:#3a2210;font-size:12px;margin-top:40px;text-shadow:1px 1px #d8b878">Choose the Design</h2>
+    <h2 data-t="Choose the Design" style="color:#3a2210;font-size:14px;margin-top:40px;text-shadow:1px 1px #d8b878">Choose the Design</h2>
     <div style="display:flex;gap:30px;margin-top:60px">
-      <button class="sdv-btn" id="choose-clothing-btn" style="font-size:10px;padding:30px 40px;background:linear-gradient(180deg,#4878b8 0%,#305898 100%);color:#f8e8c0;text-shadow:1px 1px #182848">Clothing</button>
-      <button class="sdv-btn" id="choose-decor-btn" style="font-size:10px;padding:30px 40px;background:linear-gradient(180deg,#48a848 0%,#308830 100%);color:#f8e8c0;text-shadow:1px 1px #184818">Decor</button>
+      <button class="sdv-btn" id="choose-clothing-btn" data-t="Clothing" style="font-size:12px;padding:32px 42px;background:linear-gradient(180deg,#4878b8 0%,#305898 100%);color:#f8e8c0;text-shadow:1px 1px #182848">Clothing</button>
+      <button class="sdv-btn" id="choose-decor-btn" data-t="Decor" style="font-size:12px;padding:32px 42px;background:linear-gradient(180deg,#48a848 0%,#308830 100%);color:#f8e8c0;text-shadow:1px 1px #184818">Decor</button>
     </div>
-    <button class="sdv-btn" id="design-choice-back" style="font-size:6px;padding:6px 14px;margin-top:40px">BACK</button>
+    <button class="sdv-btn" id="design-choice-back" data-t="BACK" style="font-size:7px;padding:6px 14px;margin-top:40px">BACK</button>
   </div>
   <!-- DECOR DESIGN SCREEN -->
   <div id="decor-design-screen" class="screen">
-    <h2 style="color:#3a2210;font-size:11px;text-shadow:1px 1px #d8b878;margin-top:6px">DESIGN DECOR</h2>
+    <h2 data-t="DESIGN DECOR" style="color:#3a2210;font-size:13px;text-shadow:1px 1px #d8b878;margin-top:6px">DESIGN DECOR</h2>
     <div class="clothing-types" id="decor-types"></div>
     <div id="decor-sculpture-bar" style="display:none;margin-top:2px">
-      <span style="font-family:'Press Start 2P',monospace;font-size:5px;color:#6a5030;margin-right:6px">SHAPE:</span>
-      <button class="sdv-btn decor-sculpt-btn" data-shape="cat" style="font-size:5px;padding:3px 8px">Cat</button>
-      <button class="sdv-btn decor-sculpt-btn" data-shape="dog" style="font-size:5px;padding:3px 8px">Dog</button>
-      <button class="sdv-btn decor-sculpt-btn" data-shape="bunny" style="font-size:5px;padding:3px 8px">Bunny</button>
+      <span data-t="SHAPE:" style="font-family:'Press Start 2P',monospace;font-size:6px;color:#6a5030;margin-right:6px">SHAPE:</span>
+      <button class="sdv-btn decor-sculpt-btn" data-shape="cat" data-t="Cat" style="font-size:6px;padding:4px 9px">Cat</button>
+      <button class="sdv-btn decor-sculpt-btn" data-shape="dog" data-t="Dog" style="font-size:6px;padding:4px 9px">Dog</button>
+      <button class="sdv-btn decor-sculpt-btn" data-shape="bunny" data-t="Bunny" style="font-size:6px;padding:4px 9px">Bunny</button>
     </div>
     <div id="decor-workspace" style="display:flex;gap:12px;width:95%;max-width:720px;margin-top:6px;flex:1">
       <div id="decor-preview-area" style="display:flex;justify-content:center;align-items:center;background:#f8f0d8;border:4px solid #5a3a18;box-shadow:inset 0 0 0 2px #e8c888;min-width:240px;min-height:240px">
         <canvas id="decor-canvas" width="120" height="120" style="width:240px;height:240px;image-rendering:pixelated"></canvas>
       </div>
       <div id="decor-sidebar" style="flex:1;display:flex;flex-direction:column;gap:8px;overflow-y:auto">
-        <div class="design-section"><label>COLOR</label><div class="design-colors" id="decor-colors"></div></div>
-        <div class="design-section"><label>ACCENT</label><div class="design-colors" id="decor-accent-colors"></div></div>
+        <div class="design-section"><label data-t="COLOR">COLOR</label><div class="design-colors" id="decor-colors"></div></div>
+        <div class="design-section"><label data-t="ACCENT">ACCENT</label><div class="design-colors" id="decor-accent-colors"></div></div>
       </div>
     </div>
     <div style="display:flex;gap:10px;margin:8px 0">
-      <button class="sdv-btn" id="decor-back" style="font-size:7px;padding:6px 14px">BACK</button>
-      <button class="sdv-btn" id="decor-done" style="font-size:7px;background:linear-gradient(180deg,#c84040 0%,#a03030 100%);color:#f8e8c0;text-shadow:1px 1px #601818">DONE</button>
+      <button class="sdv-btn" id="decor-back" data-t="BACK" style="font-size:8px;padding:7px 15px">BACK</button>
+      <button class="sdv-btn" id="decor-done" data-t="DONE" style="font-size:8px;padding:7px 15px;background:linear-gradient(180deg,#c84040 0%,#a03030 100%);color:#f8e8c0;text-shadow:1px 1px #601818">DONE</button>
     </div>
   </div>
   <!-- DESIGN CHOICE SCREEN -->
@@ -690,35 +729,194 @@ body{
     </div>
     <button class="sdv-btn" id="design-choice-back" style="font-size:7px;padding:6px 16px;margin-top:40px;background:linear-gradient(180deg,#c84040 0%,#a03030 100%);color:#f8e8c0;text-shadow:1px 1px #601818">BACK</button>
   </div>
-  <!-- DECOR DESIGN SCREEN -->
-  <div id="decor-design-screen" class="screen">
-    <h2 style="color:#3a2210;font-size:11px;text-shadow:1px 1px #d8b878;margin-top:6px">DESIGN DECOR</h2>
-    <div class="clothing-types" id="decor-types"></div>
-    <div id="decor-sculpture-shapes" style="display:none;margin-bottom:4px"></div>
-    <div id="clothing-workspace">
-      <div id="clothing-preview-area">
-        <canvas id="decor-canvas" width="120" height="120" style="width:240px;height:240px"></canvas>
-      </div>
-      <div id="clothing-sidebar">
-        <div class="design-section"><label>COLOR</label><div class="design-colors" id="decor-colors"></div></div>
-        <div class="design-section"><label>ACCENT</label><div class="design-colors" id="decor-accent-colors"></div></div>
-      </div>
-    </div>
-    <div id="clothing-bottom">
-      <button class="sdv-btn" id="decor-done" style="font-size:7px;background:linear-gradient(180deg,#c84040 0%,#a03030 100%);color:#f8e8c0;text-shadow:1px 1px #601818">DONE</button>
-    </div>
-  </div>
-  <div id="locked-toast">Locked.</div>
+  <div id="locked-toast" data-t="LOCKED">Locked.</div>
   <div id="save-design-popup" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:rgba(0,0,0,0.5);justify-content:center;align-items:center">
     <div style="background:#c8a065;border:4px solid #5a3a18;box-shadow:inset 0 0 0 2px #e8c888,4px 4px 12px rgba(0,0,0,0.5);padding:16px 24px;display:flex;flex-direction:column;align-items:center;gap:10px">
-      <div style="font-family:'Press Start 2P',monospace;font-size:8px;color:#3a2210;text-shadow:1px 1px #d8b878">SAVED!</div>
-      <div style="font-family:'Press Start 2P',monospace;font-size:5px;color:#6a5030">Name your design:</div>
-      <input type="text" id="design-name-input" placeholder="Design name..." maxlength="16" style="background:#f8f0d8;border:3px solid #5a3a18;color:#3a2210;padding:6px;font-family:'Press Start 2P',monospace;font-size:7px;text-align:center;width:180px;box-shadow:inset 0 2px 4px rgba(0,0,0,0.15)">
-      <button class="sdv-btn" id="design-name-ok" style="font-size:7px;padding:6px 16px;background:linear-gradient(180deg,#48a848 0%,#308830 100%);color:#f8e8c0;text-shadow:1px 1px #184818">OK</button>
+      <div data-t="SAVED!" style="font-family:'Press Start 2P',monospace;font-size:9px;color:#3a2210;text-shadow:1px 1px #d8b878">SAVED!</div>
+      <div data-t="Name your design:" style="font-family:'Press Start 2P',monospace;font-size:6px;color:#6a5030">Name your design:</div>
+      <input type="text" id="design-name-input" data-t="Design name..." placeholder="Design name..." maxlength="16" style="background:#f8f0d8;border:3px solid #5a3a18;color:#3a2210;padding:6px;font-family:'Press Start 2P',monospace;font-size:8px;text-align:center;width:180px;box-shadow:inset 0 2px 4px rgba(0,0,0,0.15)">
+      <button class="sdv-btn" id="design-name-ok" data-t="OK" style="font-size:8px;padding:7px 18px;background:linear-gradient(180deg,#48a848 0%,#308830 100%);color:#f8e8c0;text-shadow:1px 1px #184818">OK</button>
     </div>
   </div>
 </div>
 <script>
+// ============ LANGUAGE SYSTEM ============
+const LANG = {
+  current: localStorage.getItem('shopst4r-lang') || 'en',
+  en: {
+    // Character Creation
+    'Create Your Character': 'Create Your Character',
+    'START GAME': 'START GAME',
+    'Type name...': 'Type name...',
+    'Skin': 'Skin', 'Eyes': 'Eyes', 'Hair': 'Hair', 'Hair Color': 'Hair Color',
+    'Shirt': 'Shirt', 'Shirt Color': 'Shirt Color', 'Pants': 'Pants', 'Accessory': 'Accessory',
+    // Cutscene
+    'NEXT': 'NEXT', 'CONTINUE': 'CONTINUE',
+    'Shopkeeper:': 'Shopkeeper:',
+    'd0': "Hey there! You look like someone who appreciates fine goods.",
+    'd1': "I've run this shop for ages... but it's time I retired to the farm.",
+    'd2': "Do you want this store?",
+    'd3': "Yes!",
+    'd4': "Wonderful! It's yours. Make it cozy!",
+    'One day later...': 'One day later...',
+    // Room Customize
+    'CUSTOMIZE YOUR SHOP': 'CUSTOMIZE YOUR SHOP',
+    'WALL COLOR': 'WALL COLOR', 'WALL STYLE': 'WALL STYLE',
+    'FLOOR COLOR': 'FLOOR COLOR', 'FLOOR STYLE': 'FLOOR STYLE',
+    'DONE': 'DONE', 'BACK': 'BACK', 'OK': 'OK',
+    'Classic':'Classic','Blue':'Blue','Green':'Green','Pink':'Pink','Gray':'Gray','Cream':'Cream','Lavender':'Lavender','Tan':'Tan',
+    'Planks':'Planks','Brick':'Brick','Smooth':'Smooth',
+    'Oak':'Oak','Dark':'Dark','Light':'Light','Cherry':'Cherry','White':'White','Blue Tile':'Blue Tile',
+    'Wood':'Wood','Tile':'Tile','Stone':'Stone',
+    // Shop
+    'DECORATE YOUR STORE': 'DECORATE YOUR STORE',
+    'YOUR SHOP': 'YOUR SHOP',
+    'Click to place | Drag to move | X to delete': 'Click to place | Drag to move | X to delete',
+    'Design': 'Design', 'Start Day': 'Start Day',
+    "Don't Forget the Shop Name!": "Don't Forget the Shop Name!",
+    'Enter shop name...': 'Enter shop name...',
+    'YOUR AVATAR': 'YOUR AVATAR',
+    // Design
+    'DESIGN CLOTHING': 'DESIGN CLOTHING',
+    'Choose the Design': 'Choose the Design',
+    'Clothing': 'Clothing', 'Decor': 'Decor',
+    'COLOR': 'COLOR', 'GRAPHICS': 'GRAPHICS',
+    'SAVE DESIGN': 'SAVE DESIGN',
+    'LOCKED': 'LOCKED',
+    'DESIGN DECOR': 'DESIGN DECOR',
+    'SHAPE:': 'SHAPE:',
+    'Cat': 'Cat', 'Dog': 'Dog', 'Bunny': 'Bunny',
+    'ACCENT': 'ACCENT',
+    'SAVED!': 'SAVED!',
+    'Name your design:': 'Name your design:',
+    'Design name...': 'Design name...',
+    'Clear All': 'Clear All',
+    // Tabs
+    'SHOP': 'SHOP', 'STORE': 'STORE', 'DECOR': 'DECOR', 'AVATAR': 'AVATAR', 'MAIL': 'MAIL',
+    'MY DECOR': 'MY DECOR',
+    // Store
+    'Supplies': 'Supplies', 'Furniture': 'Furniture',
+    'BUY': 'BUY', 'OWNED': 'OWNED',
+    // Inventory tabs
+    'Saved': 'Saved', 'Paintings': 'Paintings',
+    // Mail
+    'Select a message to read.': 'Select a message to read.',
+    // Day
+    'SOLD OUT!': 'SOLD OUT!',
+    'All clothes have been sold!': 'All clothes have been sold!',
+    'DAY OVER!': 'DAY OVER!',
+    // Clothing types
+    'Tee': 'Tee', 'Tank': 'Tank', 'Hoodie': 'Hoodie', 'Jacket': 'Jacket',
+    // Decor types
+    'Pot': 'Pot', 'Night Light': 'Night Light', 'Sculpture': 'Sculpture',
+    'Painting': 'Painting', 'Wall Plant': 'Wall Plant', 'Table Plant': 'Table Plant',
+    'Picture Frame': 'Picture Frame', 'Small Lamp': 'Small Lamp',
+    // Misc
+    'Got it!': 'Got it!',
+    'No saved designs yet. Save designs in the Design screen!': 'No saved designs yet. Save designs in the Design screen!',
+    'No clothing designed yet.': 'No clothing designed yet.',
+    'No decor items yet. Buy some in the Store!': 'No decor items yet. Buy some in the Store!',
+    'Empty.': 'Empty.',
+    'No slots left - buy more in the Store!': 'No slots left - buy more in the Store!',
+    'Name': 'Name',
+    'langToggle': 'EN / 中文',
+  },
+  zh: {
+    'Create Your Character': '创建你的角色',
+    'START GAME': '开始游戏',
+    'Type name...': '输入名字...',
+    'Skin': '肤色', 'Eyes': '眼睛', 'Hair': '发型', 'Hair Color': '发色',
+    'Shirt': '上衣', 'Shirt Color': '衣色', 'Pants': '裤子', 'Accessory': '配饰',
+    'NEXT': '下一步', 'CONTINUE': '继续',
+    'Shopkeeper:': '店主:',
+    'd0': '嘿！你看起来像是个欣赏好物的人。',
+    'd1': '这家店我经营了很久……但我要退休去农场了。',
+    'd2': '你想接手这家店吗？',
+    'd3': '好的！',
+    'd4': '太好了！现在归你了，好好装扮它吧！',
+    'One day later...': '一天之后……',
+    'CUSTOMIZE YOUR SHOP': '装修你的店铺',
+    'WALL COLOR': '墙壁颜色', 'WALL STYLE': '墙壁样式',
+    'FLOOR COLOR': '地板颜色', 'FLOOR STYLE': '地板样式',
+    'DONE': '完成', 'BACK': '返回', 'OK': '确定',
+    'Classic':'经典','Blue':'蓝色','Green':'绿色','Pink':'粉色','Gray':'灰色','Cream':'奶油','Lavender':'薰衣草','Tan':'棕褐',
+    'Planks':'木板','Brick':'砖墙','Smooth':'光滑',
+    'Oak':'橡木','Dark':'深色','Light':'浅色','Cherry':'樱桃','White':'白色','Blue Tile':'蓝砖',
+    'Wood':'木地板','Tile':'瓷砖','Stone':'石板',
+    'DECORATE YOUR STORE': '装饰你的店铺',
+    'YOUR SHOP': '你的店铺',
+    'Click to place | Drag to move | X to delete': '点击放置 | 拖拽移动 | X 删除',
+    'Design': '设计', 'Start Day': '开始营业',
+    "Don't Forget the Shop Name!": '别忘了给店铺起名！',
+    'Enter shop name...': '输入店名...',
+    'YOUR AVATAR': '你的角色',
+    'DESIGN CLOTHING': '设计服装',
+    'Choose the Design': '选择设计类型',
+    'Clothing': '服装', 'Decor': '装饰',
+    'COLOR': '颜色', 'GRAPHICS': '图案',
+    'SAVE DESIGN': '保存设计',
+    'LOCKED': '锁定',
+    'DESIGN DECOR': '设计装饰',
+    'SHAPE:': '造型:',
+    'Cat': '猫咪', 'Dog': '小狗', 'Bunny': '兔子',
+    'ACCENT': '点缀色',
+    'SAVED!': '已保存！',
+    'Name your design:': '给设计取名:',
+    'Design name...': '设计名称...',
+    'Clear All': '全部清除',
+    'SHOP': '店铺', 'STORE': '商店', 'DECOR': '装饰', 'AVATAR': '角色', 'MAIL': '邮件',
+    'MY DECOR': '我的装饰',
+    'Supplies': '材料', 'Furniture': '家具',
+    'BUY': '购买', 'OWNED': '已拥有',
+    'Saved': '已保存', 'Paintings': '画作',
+    'Select a message to read.': '选择一封邮件阅读。',
+    'SOLD OUT!': '全部售出！',
+    'All clothes have been sold!': '所有衣服都卖光了！',
+    'DAY OVER!': '今日结束！',
+    'Tee': 'T恤', 'Tank': '背心', 'Hoodie': '卫衣', 'Jacket': '夹克',
+    'Pot': '花盆', 'Night Light': '夜灯', 'Sculpture': '雕塑',
+    'Painting': '画作', 'Wall Plant': '壁挂植物', 'Table Plant': '桌上植物',
+    'Picture Frame': '相框', 'Small Lamp': '小台灯',
+    'Got it!': '知道了！',
+    'No saved designs yet. Save designs in the Design screen!': '还没有保存的设计。去设计界面保存吧！',
+    'No clothing designed yet.': '还没有设计服装。',
+    'No decor items yet. Buy some in the Store!': '还没有装饰品。去商店买一些吧！',
+    'Empty.': '空的。',
+    'No slots left - buy more in the Store!': '没有空位了 - 去商店购买更多！',
+    'Name': '名字',
+    'langToggle': '中文 / EN',
+  }
+};
+
+function t(key) {
+  return (LANG[LANG.current] && LANG[LANG.current][key]) || key;
+}
+
+function setLang(lang) {
+  LANG.current = lang;
+  localStorage.setItem('shopst4r-lang', lang);
+  applyTranslations();
+}
+
+function toggleLang() {
+  setLang(LANG.current === 'en' ? 'zh' : 'en');
+}
+
+function applyTranslations() {
+  // Apply translations to all elements with data-t attribute
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.getAttribute('data-t');
+    if (el.tagName === 'INPUT') {
+      el.placeholder = t(key);
+    } else {
+      el.textContent = t(key);
+    }
+  });
+  // Update lang toggle button
+  const langBtn = document.getElementById('lang-toggle-btn');
+  if (langBtn) langBtn.textContent = t('langToggle');
+}
+
 // ============ STARDEW-STYLE SPRITE ENGINE ============
 const O='#1a1008'; // outline color - very dark brown/black
 
