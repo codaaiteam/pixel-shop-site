@@ -2,6 +2,8 @@
 
 import { useState, useRef, useCallback } from "react";
 
+const EMBED_CODE = `<iframe src="https://shopst4r.com/game/index.html" width="960" height="600" frameborder="0" allowfullscreen style="border:none;border-radius:8px;"></iframe>`;
+
 const faqs = [
   {
     q: "Is ShopSt4r free to play?",
@@ -68,6 +70,153 @@ const sectionTitle = {
   marginBottom: 40,
   textAlign: "center" as const,
 };
+
+function ShareEmbed() {
+  const [showEmbed, setShowEmbed] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const shareUrl = "https://shopst4r.com";
+  const shareText = "ShopSt4r — A cozy pixel shop game built by an 11-year-old in 2 days!";
+
+  const copyEmbed = () => {
+    navigator.clipboard.writeText(EMBED_CODE);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const shareTwitter = () => {
+    window.open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
+      "_blank"
+    );
+  };
+
+  const shareReddit = () => {
+    window.open(
+      `https://reddit.com/submit?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareText)}`,
+      "_blank"
+    );
+  };
+
+  return (
+    <div style={{ marginTop: 12 }}>
+      {/* Share + Embed buttons row */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 12,
+          flexWrap: "wrap",
+        }}
+      >
+        <button
+          onClick={shareTwitter}
+          style={{
+            background: "#362a50",
+            color: "#6898c8",
+            border: "2px solid #4a3a68",
+            borderRadius: 4,
+            padding: "6px 14px",
+            fontSize: 13,
+            cursor: "pointer",
+            fontFamily: "inherit",
+          }}
+        >
+          Share on X
+        </button>
+        <button
+          onClick={shareReddit}
+          style={{
+            background: "#362a50",
+            color: "#e868a8",
+            border: "2px solid #4a3a68",
+            borderRadius: 4,
+            padding: "6px 14px",
+            fontSize: 13,
+            cursor: "pointer",
+            fontFamily: "inherit",
+          }}
+        >
+          Share on Reddit
+        </button>
+        <button
+          onClick={() => setShowEmbed(!showEmbed)}
+          style={{
+            background: showEmbed ? "#4a3a68" : "#362a50",
+            color: "#f8d028",
+            border: "2px solid #4a3a68",
+            borderRadius: 4,
+            padding: "6px 14px",
+            fontSize: 13,
+            cursor: "pointer",
+            fontFamily: "inherit",
+          }}
+        >
+          {showEmbed ? "Hide Embed Code" : "&lt;/&gt; Embed"}
+        </button>
+      </div>
+
+      {/* Embed code box */}
+      {showEmbed && (
+        <div
+          style={{
+            marginTop: 12,
+            background: "#1a1028",
+            border: "2px solid #362a50",
+            borderRadius: 6,
+            padding: "12px 16px",
+            maxWidth: 700,
+            margin: "12px auto 0",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: 8,
+            }}
+          >
+            <span style={{ color: "#a898b8", fontSize: 12 }}>
+              Embed this game on your site:
+            </span>
+            <button
+              onClick={copyEmbed}
+              style={{
+                background: copied ? "#48c848" : "#f8d028",
+                color: "#1a1028",
+                border: "none",
+                borderRadius: 4,
+                padding: "4px 12px",
+                fontSize: 12,
+                fontWeight: 700,
+                cursor: "pointer",
+              }}
+            >
+              {copied ? "Copied!" : "Copy"}
+            </button>
+          </div>
+          <code
+            style={{
+              display: "block",
+              background: "#0d0818",
+              padding: "10px 12px",
+              borderRadius: 4,
+              color: "#48c848",
+              fontSize: 11,
+              lineHeight: 1.5,
+              overflowX: "auto",
+              whiteSpace: "pre",
+              fontFamily: "monospace",
+            }}
+          >
+            {EMBED_CODE}
+          </code>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function HomeContent() {
   const [playing, setPlaying] = useState(false);
@@ -269,13 +418,16 @@ export default function HomeContent() {
           )}
         </div>
 
-        {/* SEO keyword line under game */}
+        {/* Share + Embed bar under game */}
+        <ShareEmbed />
+
+        {/* SEO keyword line */}
         <p
           style={{
             textAlign: "center",
             color: "#a898b8",
             fontSize: 13,
-            marginTop: 12,
+            marginTop: 8,
           }}
         >
           Play ShopSt4r Online Free — Cozy Pixel Shop Simulator
