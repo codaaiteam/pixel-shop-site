@@ -36,7 +36,7 @@ export default function PlayPage() {
         }}
       >
         <iframe
-          src="/game/index.html"
+          src="/game/index.html?lang=en"
           title="ShopSt4r — Pixel Shop Game"
           style={{
             width: "100%",

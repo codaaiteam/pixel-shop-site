@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 
-const EMBED_CODE = `<iframe src="https://shopst4r.com/game/index.html" width="960" height="600" frameborder="0" allowfullscreen style="border:none;border-radius:8px;"></iframe>`;
+const EMBED_CODE = `<iframe src="https://shopst4r.com/game/index.html?lang=en" width="960" height="600" frameborder="0" allowfullscreen style="border:none;border-radius:8px;"></iframe>`;
 
 const faqs = [
   {
@@ -319,7 +319,7 @@ export default function HomeContent() {
           }}
         >
           <iframe
-            src="/game/index.html"
+            src="/game/index.html?lang=en"
             title="ShopSt4r — Pixel Shop Game"
             style={{
               width: "100%",

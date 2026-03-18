@@ -566,6 +566,46 @@ body{
   padding: 4px 8px; cursor: pointer;
 }
 #lang-toggle-btn:hover { background: #5a3a18; }
+
+/* Chinese text needs more visual size than Latin text in the same pixel UI */
+body.lang-zh #game { font-size: 1.24em; }
+body.lang-zh .sdv-btn { font-size: 10px !important; padding: 7px 12px; line-height: 1.5; }
+body.lang-zh .create-section label,
+body.lang-zh .room-section label,
+body.lang-zh .design-section label { font-size: 9px !important; line-height: 1.5; }
+body.lang-zh #char-create h2,
+body.lang-zh #room-customize h2,
+body.lang-zh #clothing-screen h2 { font-size: 16px !important; }
+body.lang-zh #name-input,
+body.lang-zh #design-name-input { font-size: 12px !important; }
+body.lang-zh #start-btn,
+body.lang-zh #dialog-next,
+body.lang-zh #room-done-btn,
+body.lang-zh #design-choice-back,
+body.lang-zh #clothing-save-design,
+body.lang-zh #clothing-done,
+body.lang-zh #decor-back,
+body.lang-zh #decor-done,
+body.lang-zh #design-name-ok { font-size: 10px !important; padding: 8px 16px !important; }
+body.lang-zh #dialog-box { font-size: 11px !important; line-height: 2.4; }
+body.lang-zh #transition-text { font-size: 18px !important; }
+body.lang-zh #shop-header span,
+body.lang-zh #mail-header span { font-size: 11px !important; }
+body.lang-zh #shop-header .hint,
+body.lang-zh .tooltip-box p,
+body.lang-zh #tutorial-box p { font-size: 8px !important; line-height: 1.9; }
+body.lang-zh .clothing-type-btn,
+body.lang-zh .panel-btn,
+body.lang-zh .graphic-btn,
+body.lang-zh .room-style-btn { font-size: 8px !important; line-height: 1.5; }
+body.lang-zh .store-item-name,
+body.lang-zh .store-item-bought,
+body.lang-zh .avatar-clothing-item span,
+body.lang-zh #mail-from,
+body.lang-zh .mail-sender-name { font-size: 8px !important; line-height: 1.5; }
+body.lang-zh .store-item-price,
+body.lang-zh #mail-text { font-size: 9px !important; line-height: 2; }
+body.lang-zh #lang-toggle-btn { font-size: 8px; padding: 5px 10px; }
 </style>
 </head>
 <body>
@@ -741,8 +781,12 @@ body{
 </div>
 <script>
 // ============ LANGUAGE SYSTEM ============
+const URL_LANG = new URLSearchParams(window.location.search).get('lang');
+const INITIAL_LANG = URL_LANG === 'zh' || URL_LANG === 'en'
+  ? URL_LANG
+  : (localStorage.getItem('shopst4r-lang') || 'en');
 const LANG = {
-  current: localStorage.getItem('shopst4r-lang') || 'en',
+  current: INITIAL_LANG,
   en: {
     // Character Creation
     'Create Your Character': 'Create Your Character',
@@ -807,10 +851,17 @@ const LANG = {
     'DAY OVER!': 'DAY OVER!',
     // Clothing types
     'Tee': 'Tee', 'Tank': 'Tank', 'Hoodie': 'Hoodie', 'Jacket': 'Jacket',
+    'Short': 'Short', 'Long': 'Long', 'Spiky': 'Spiky', 'Buzz': 'Buzz',
+    'Mohawk': 'Mohawk', 'Curly': 'Curly', 'Ponytail': 'Ponytail', 'None': 'None',
+    'Glasses': 'Glasses', 'Headband': 'Headband', 'Scarf': 'Scarf', 'Earring': 'Earring', 'Hat': 'Hat',
     // Decor types
     'Pot': 'Pot', 'Night Light': 'Night Light', 'Sculpture': 'Sculpture',
     'Painting': 'Painting', 'Wall Plant': 'Wall Plant', 'Table Plant': 'Table Plant',
     'Picture Frame': 'Picture Frame', 'Small Lamp': 'Small Lamp',
+    // Store and avatar item names
+    'Hoodie Pattern': 'Hoodie Pattern', 'Jacket Pattern': 'Jacket Pattern',
+    'Cowboy Hat': 'Cowboy Hat', 'Cool Glasses': 'Cool Glasses', 'Red Headband': 'Red Headband',
+    'Warm Scarf': 'Warm Scarf', 'Gold Earring': 'Gold Earring',
     // Misc
     'Got it!': 'Got it!',
     'No saved designs yet. Save designs in the Design screen!': 'No saved designs yet. Save designs in the Design screen!',
@@ -818,6 +869,11 @@ const LANG = {
     'No decor items yet. Buy some in the Store!': 'No decor items yet. Buy some in the Store!',
     'Empty.': 'Empty.',
     'No slots left - buy more in the Store!': 'No slots left - buy more in the Store!',
+    'NEW GAME': 'NEW GAME',
+    'Save corrupted. Starting new game.': 'Save corrupted. Starting new game.',
+    'Design button upgraded! You can now design decor!': 'Design button upgraded! You can now design decor!',
+    'Graphics upgraded! You can now move, duplicate & layer graphics!': 'Graphics upgraded! You can now move, duplicate & layer graphics!',
+    'New item in your Decor tab! Open it to place.': 'New item in your Decor tab! Open it to place.',
     'Name': 'Name',
     'langToggle': 'EN / 中文',
   },
@@ -874,15 +930,26 @@ const LANG = {
     'All clothes have been sold!': '所有衣服都卖光了！',
     'DAY OVER!': '今日结束！',
     'Tee': 'T恤', 'Tank': '背心', 'Hoodie': '卫衣', 'Jacket': '夹克',
+    'Short': '短发', 'Long': '长发', 'Spiky': '刺猬头', 'Buzz': '寸头',
+    'Mohawk': '莫西干', 'Curly': '卷发', 'Ponytail': '马尾', 'None': '无',
+    'Glasses': '眼镜', 'Headband': '头带', 'Scarf': '围巾', 'Earring': '耳环', 'Hat': '帽子',
     'Pot': '花盆', 'Night Light': '夜灯', 'Sculpture': '雕塑',
     'Painting': '画作', 'Wall Plant': '壁挂植物', 'Table Plant': '桌上植物',
     'Picture Frame': '相框', 'Small Lamp': '小台灯',
+    'Hoodie Pattern': '卫衣图案', 'Jacket Pattern': '夹克图案',
+    'Cowboy Hat': '牛仔帽', 'Cool Glasses': '酷酷眼镜', 'Red Headband': '红色头带',
+    'Warm Scarf': '保暖围巾', 'Gold Earring': '金耳环',
     'Got it!': '知道了！',
     'No saved designs yet. Save designs in the Design screen!': '还没有保存的设计。去设计界面保存吧！',
     'No clothing designed yet.': '还没有设计服装。',
     'No decor items yet. Buy some in the Store!': '还没有装饰品。去商店买一些吧！',
     'Empty.': '空的。',
     'No slots left - buy more in the Store!': '没有空位了 - 去商店购买更多！',
+    'NEW GAME': '新游戏',
+    'Save corrupted. Starting new game.': '存档损坏，正在开始新游戏。',
+    'Design button upgraded! You can now design decor!': '设计按钮已升级！现在你可以设计装饰品了！',
+    'Graphics upgraded! You can now move, duplicate & layer graphics!': '图案功能已升级！现在你可以移动、复制和分层图案了！',
+    'New item in your Decor tab! Open it to place.': '你的装饰栏有新物品！打开后即可摆放。',
     'Name': '名字',
     'langToggle': '中文 / EN',
   }
@@ -895,6 +962,7 @@ function t(key) {
 function setLang(lang) {
   LANG.current = lang;
   localStorage.setItem('shopst4r-lang', lang);
+  document.body.classList.toggle('lang-zh', lang === 'zh');
   applyTranslations();
 }
 
@@ -1636,7 +1704,8 @@ const makeTextRow = (id,items,prop) => {
   items.forEach((name,i)=>{
     const btn=document.createElement('button');
     btn.className='sdv-btn'+(i===0?' selected':'');
-    btn.textContent=name;
+    btn.dataset.t=name;
+    btn.textContent=t(name);
     btn.onclick=()=>{player[prop]=i;row.querySelectorAll('.sdv-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');updatePreview();};
     row.appendChild(btn);
   });
@@ -1673,8 +1742,8 @@ const startCutscene = () => {
 };
 const showDialog = () => {
   const d=DIALOGS[dialogIdx];
-  document.getElementById('cutscene-text').innerHTML=`<strong>${d.speaker==='npc'?'Shopkeeper':player.name}:</strong><br>${d.text}`;
-  document.getElementById('dialog-next').textContent=dialogIdx<DIALOGS.length-1?'NEXT':'CONTINUE';
+  document.getElementById('cutscene-text').innerHTML=`<strong>${d.speaker==='npc'?t('Shopkeeper:'):player.name}:</strong><br>${d.text}`;
+  document.getElementById('dialog-next').textContent=t(dialogIdx<DIALOGS.length-1?'NEXT':'CONTINUE');
 };
 document.getElementById('dialog-next').onclick=()=>{
   dialogIdx++;
@@ -1996,7 +2065,7 @@ const initItemPanel = () => {
     c.style.height=Math.min((item.h+2)*0.6,36)+'px';
     c.style.imageRendering='pixelated';
     item.draw(c.getContext('2d'));btn.appendChild(c);
-    const span=document.createElement('span');span.textContent=item.name;btn.appendChild(span);
+    const span=document.createElement('span');span.dataset.t=item.name;span.textContent=t(item.name);btn.appendChild(span);
     btn.onclick=()=>placeItem(key);panel.appendChild(btn);
   });
   updatePanelLimits();
@@ -3491,11 +3560,11 @@ const renderStoreMenu = () => {
     }
     div.appendChild(preview);
 
-    const name=document.createElement('div');name.className='store-item-name';name.textContent=si.name;
+    const name=document.createElement('div');name.className='store-item-name';name.dataset.t=si.name;name.textContent=t(si.name);
     div.appendChild(name);
 
     if(purchased[si.id]){
-      const bought=document.createElement('div');bought.className='store-item-bought';bought.textContent='OWNED';
+      const bought=document.createElement('div');bought.className='store-item-bought';bought.dataset.t='OWNED';bought.textContent=t('OWNED');
       div.appendChild(bought);
     } else {
       const price=document.createElement('div');price.className='store-item-price';
@@ -3504,7 +3573,8 @@ const renderStoreMenu = () => {
       div.appendChild(price);
 
       const btn=document.createElement('button');btn.className='store-buy-btn';
-      btn.textContent='BUY';
+      btn.dataset.t='BUY';
+      btn.textContent=t('BUY');
       if(money<si.price)btn.classList.add('disabled');
       btn.onclick=()=>{
         if(money<si.price||purchased[si.id])return;
@@ -3523,14 +3593,14 @@ const renderStoreMenu = () => {
           updateDesignBtn();
         } else if(si.type==='ability'){
           if(si.id==='decor_ability'){
-            document.getElementById('shop-hint').textContent='Design button upgraded! You can now design decor!';
+            document.getElementById('shop-hint').textContent=t('Design button upgraded! You can now design decor!');
           } else if(si.id==='move_gfx_ability'){
-            document.getElementById('shop-hint').textContent='Graphics upgraded! You can now move, duplicate & layer graphics!';
+            document.getElementById('shop-hint').textContent=t('Graphics upgraded! You can now move, duplicate & layer graphics!');
           }
         } else if(si.type==='furniture'||si.type==='decor'){
           ownedDecor.push({itemKey:si.itemKey,id:si.id});
           boughtFurniture=true;
-          document.getElementById('shop-hint').textContent='New item in your Decor tab! Open it to place.';
+          document.getElementById('shop-hint').textContent=t('New item in your Decor tab! Open it to place.');
           enableRedecorate();
         } else if(si.type==='avatar'){
           player.accessory=si.accIdx;
@@ -3656,7 +3726,7 @@ const renderAvatarMenu = () => {
   content.innerHTML='';
   // "None" option
   const noneDiv=document.createElement('div');noneDiv.className='avatar-clothing-item'+(player.accessory===0?' equipped':'');
-  const noneSpan=document.createElement('span');noneSpan.textContent='None';
+  const noneSpan=document.createElement('span');noneSpan.dataset.t='None';noneSpan.textContent=t('None');
   noneDiv.appendChild(noneSpan);
   noneDiv.onclick=()=>{player.accessory=0;renderAvatarMenu();updatePlayerSprite();};
   content.appendChild(noneDiv);
@@ -3668,7 +3738,7 @@ const renderAvatarMenu = () => {
     const tempP=Object.assign({},player);tempP.accessory=ac.accIdx;
     drawChar(c,tempP);
     div.appendChild(c);
-    const span=document.createElement('span');span.textContent=ac.name;
+    const span=document.createElement('span');span.dataset.t=ac.name;span.textContent=t(ac.name);
     div.appendChild(span);
     div.onclick=()=>{player.accessory=ac.accIdx;renderAvatarMenu();updatePlayerSprite();};
     content.appendChild(div);
@@ -4134,7 +4204,8 @@ const initDecorDesign = () => {
     const btn=document.createElement('button');
     btn.className='sdv-btn'+(decorState.type===dt.id?' selected':'');
     btn.style.cssText='font-size:5px;padding:4px 8px;margin:2px';
-    btn.textContent=dt.name;
+    btn.dataset.t=dt.name;
+    btn.textContent=t(dt.name);
     btn.onclick=()=>{
       decorState.type=dt.id;
       document.getElementById('decor-sculpture-bar').style.display=dt.id==='sculpture'?'flex':'none';
@@ -4578,6 +4649,8 @@ window.addEventListener('beforeunload',()=>{
 
 // ============ STARTUP ============
 const hasSave = () => !!localStorage.getItem(SAVE_KEY);
+document.body.classList.toggle('lang-zh', LANG.current === 'zh');
+applyTranslations();
 
 if(hasSave()){
   // Show continue/new game options
@@ -4586,7 +4659,8 @@ if(hasSave()){
   // Add continue button before start
   const contBtn=document.createElement('button');
   contBtn.id='continue-btn';
-  contBtn.textContent='CONTINUE';
+  contBtn.dataset.t='CONTINUE';
+  contBtn.textContent=t('CONTINUE');
   contBtn.style.cssText=startBtn.style.cssText;
   contBtn.style.background='linear-gradient(180deg,#48a848 0%,#308830 100%)';
   contBtn.style.border='3px solid #5a3a18';
@@ -4598,9 +4672,10 @@ if(hasSave()){
   contBtn.style.boxShadow='inset 0 0 0 1px #68c868,1px 1px 0 #2a1808';
   contBtn.style.textShadow='1px 1px #184818';
   contBtn.style.marginBottom='6px';
-  contBtn.onclick=()=>{if(!loadGame()){alert('Save corrupted. Starting new game.');startBtn.click();}};
+  contBtn.onclick=()=>{if(!loadGame()){alert(t('Save corrupted. Starting new game.'));startBtn.click();}};
   startBtn.parentNode.insertBefore(contBtn,startBtn);
-  startBtn.textContent='NEW GAME';
+  startBtn.dataset.t='NEW GAME';
+  startBtn.textContent=t('NEW GAME');
   startBtn.style.fontSize='7px';
   startBtn.style.padding='6px 16px';
   startBtn.style.background='linear-gradient(180deg,#888 0%,#666 100%)';

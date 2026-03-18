@@ -148,7 +148,7 @@ export default function ZhContent({ faqs }: { faqs: FAQ[] }) {
           }}
         >
           <iframe
-            src="/game/index.html"
+            src="/game/index.html?lang=zh"
             title="ShopSt4r — 像素服装店游戏"
             style={{
               width: "100%",
