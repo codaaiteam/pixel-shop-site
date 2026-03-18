@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import Nav from "./Nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -31,48 +32,6 @@ export const metadata: Metadata = {
   },
 };
 
-function Nav() {
-  return (
-    <nav
-      style={{
-        background: "#2a1e3e",
-        borderBottom: "3px solid #5a3a18",
-        padding: "12px 24px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        position: "sticky",
-        top: 0,
-        zIndex: 100,
-      }}
-    >
-      <a
-        href="/"
-        className="pixel-font"
-        style={{ color: "#f8d028", fontSize: 14, letterSpacing: 2 }}
-      >
-        SHOPST4R
-      </a>
-      <div style={{ display: "flex", gap: 24 }}>
-        <a href="/play" style={{ color: "#48c848", fontWeight: 600 }}>
-          Play
-        </a>
-        <a href="/how-to-play" style={{ color: "#f0e8f8", fontWeight: 500 }}>
-          How to Play
-        </a>
-        <a href="/characters" style={{ color: "#f0e8f8", fontWeight: 500 }}>
-          Characters
-        </a>
-        <a href="/devlog" style={{ color: "#f0e8f8", fontWeight: 500 }}>
-          Devlog
-        </a>
-        <a href="/about" style={{ color: "#f0e8f8", fontWeight: 500 }}>
-          About
-        </a>
-      </div>
-    </nav>
-  );
-}
 
 function Footer() {
   return (
