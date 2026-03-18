@@ -121,13 +121,6 @@ export default function ZhContent({ faqs }: { faqs: FAQ[] }) {
           <p style={{ fontSize: 12, color: "#a898b8" }}>
             打开浏览器即可畅玩 — 免费、无需下载
           </p>
-          <p style={{ fontSize: 11, color: "#a898b8", marginTop: 8 }}>
-            <a href="/" style={{ color: "#6898c8" }}>
-              English
-            </a>
-            {" · "}
-            <span style={{ color: "#f8d028" }}>中文</span>
-          </p>
         </section>
       </div>
 

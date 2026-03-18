@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import Nav from "./Nav";
+import Footer from "./Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,25 +33,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-function Footer() {
-  return (
-    <footer
-      style={{
-        textAlign: "center",
-        padding: "32px 16px",
-        color: "#a898b8",
-        fontSize: 12,
-        borderTop: "1px solid #362a50",
-      }}
-    >
-      <p className="pixel-font" style={{ fontSize: 8, marginBottom: 8 }}>
-        SHOPST4R.COM
-      </p>
-      <p>&copy; {new Date().getFullYear()} ShopSt4r. All rights reserved.</p>
-    </footer>
-  );
-}
 
 export default function RootLayout({
   children,

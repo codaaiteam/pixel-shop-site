@@ -143,13 +143,6 @@ export default function HomeContent() {
           <p style={{ fontSize: 12, color: "#a898b8" }}>
             Play instantly in your browser — no download required
           </p>
-          <p style={{ fontSize: 11, color: "#a898b8", marginTop: 8 }}>
-            <span style={{ color: "#f8d028" }}>English</span>
-            {" · "}
-            <a href="/zh" style={{ color: "#6898c8" }}>
-              中文
-            </a>
-          </p>
         </section>
       </div>
 
