@@ -46,6 +46,20 @@ export default function Footer() {
         >
           中文
         </a>
+        <span style={{ color: "#362a50" }}>|</span>
+        <a
+          href="https://www.82-0-challenge.com"
+          target="_blank"
+          rel="noopener"
+          style={{
+            color: "#6898c8",
+            fontWeight: 400,
+            fontSize: 13,
+            textDecoration: "none",
+          }}
+        >
+          82-0 Challenge — Basketball Game
+        </a>
       </div>
     </footer>
   );
