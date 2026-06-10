@@ -61,6 +61,23 @@ export default function Footer() {
           82-0 Challenge — Basketball Game
         </a>
       </div>
+        <span>·</span>
+        <a href="https://38-0-game.com/" target="_blank" rel="noopener noreferrer">
+        38-0 Game
+        </a>
+        <span>·</span>
+        <a href="https://www.82-0-challenge.com/" target="_blank" rel="noopener noreferrer">
+        82-0 Challenge
+        </a>
+        <span>·</span>
+        <a href="https://7-0-game.com/" target="_blank" rel="noopener noreferrer">
+        7-0 Game
+        </a>
+        <span>·</span>
+        <a href="https://17-0-game.com/" target="_blank" rel="noopener noreferrer">
+        17-0 Challenge
+        </a>
+
     </footer>
   );
 }
