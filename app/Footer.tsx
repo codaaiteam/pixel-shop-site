@@ -47,45 +47,15 @@ export default function Footer() {
           中文
         </a>
         <span style={{ color: "#362a50" }}>|</span>
-        <a
-          href="https://www.82-0-challenge.com"
-          target="_blank"
-          rel="noopener"
-          style={{
-            color: "#6898c8",
-            fontWeight: 400,
-            fontSize: 13,
-            textDecoration: "none",
-          }}
-        >
-          82-0 Challenge — Basketball Game
-        </a>
       </div>
-        <span>·</span>
-        <a href="https://38-0-game.com/" target="_blank" rel="noopener noreferrer">
-        38-0 Game
-        </a>
-        <span>·</span>
-        <a href="https://www.82-0-challenge.com/" target="_blank" rel="noopener noreferrer">
-        82-0 Challenge
-        </a>
-        <span>·</span>
-        <a href="https://7-0-game.com/" target="_blank" rel="noopener noreferrer">
-        7-0 Game
-        </a>
-        <span>·</span>
-        <a href="https://17-0-game.com/" target="_blank" rel="noopener noreferrer">
-        17-0 Challenge
-        </a>
-        <span>·</span>
-        <a href="https://23-0-game.com/" target="_blank" rel="noopener noreferrer">
-        23-0 Game
-        </a>
-
-        <span>·</span>
-        <a href="https://27-0-game.com/" target="_blank" rel="noopener noreferrer">
-        27-0 Game
-        </a>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "8px 16px", width: "100%", padding: "16px 12px", fontSize: "13px", lineHeight: 1.6, opacity: 0.55, boxSizing: "border-box" }}>
+        <a href="https://7-0-game.com/" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>7-0 Game</a>
+        <a href="https://17-0-game.com/" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>17-0 Game</a>
+        <a href="https://23-0-game.com/" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>23-0 Game</a>
+        <a href="https://27-0-game.com/" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>27-0 Game</a>
+        <a href="https://38-0-game.com/" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>38-0 Game</a>
+        <a href="https://82-0-challenge.com/" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>82-0 Challenge</a>
+      </div>
 
 
     </footer>
