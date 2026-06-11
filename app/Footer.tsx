@@ -77,6 +77,16 @@ export default function Footer() {
         <a href="https://17-0-game.com/" target="_blank" rel="noopener noreferrer">
         17-0 Challenge
         </a>
+        <span>·</span>
+        <a href="https://23-0-game.com/" target="_blank" rel="noopener noreferrer">
+        23-0 Game
+        </a>
+
+        <span>·</span>
+        <a href="https://27-0-game.com/" target="_blank" rel="noopener noreferrer">
+        27-0 Game
+        </a>
+
 
     </footer>
   );
